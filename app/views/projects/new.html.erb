@@ -1,0 +1,170 @@
+<!-- Validation failure messages -->
+
+<% if @project.errors.any? %>
+  <% @project.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add Project</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/create_project" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for service_provider_id -->
+          <div class="form-group">
+            <label for="service_provider_id" class="col-sm-2 control-label">
+              Service provider
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="service_provider_id" name="service_provider_id" placeholder="Service provider" class="form-control" value="<%= @project.service_provider_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for name -->
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">
+              Name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @project.name %>">
+            </div>
+          </div>
+
+          <!-- Label and input for space_type_id -->
+          <div class="form-group">
+            <label for="space_type_id" class="col-sm-2 control-label">
+              Space type
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="space_type_id" name="space_type_id" placeholder="Space type" class="form-control" value="<%= @project.space_type_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for category_id -->
+          <div class="form-group">
+            <label for="category_id" class="col-sm-2 control-label">
+              Category
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="category_id" name="category_id" placeholder="Category" class="form-control" value="<%= @project.category_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for cost_amount -->
+          <div class="form-group">
+            <label for="cost_amount" class="col-sm-2 control-label">
+              Cost amount
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="cost_amount" name="cost_amount" placeholder="Cost amount" class="form-control" value="<%= @project.cost_amount %>">
+            </div>
+          </div>
+
+          <!-- Label and input for street_address_1 -->
+          <div class="form-group">
+            <label for="street_address_1" class="col-sm-2 control-label">
+              Street address 1
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="street_address_1" name="street_address_1" placeholder="Street address 1" class="form-control" value="<%= @project.street_address_1 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for street_address_2 -->
+          <div class="form-group">
+            <label for="street_address_2" class="col-sm-2 control-label">
+              Street address 2
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="street_address_2" name="street_address_2" placeholder="Street address 2" class="form-control" value="<%= @project.street_address_2 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for city -->
+          <div class="form-group">
+            <label for="city" class="col-sm-2 control-label">
+              City
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @project.city %>">
+            </div>
+          </div>
+
+          <!-- Label and input for zip -->
+          <div class="form-group">
+            <label for="zip" class="col-sm-2 control-label">
+              Zip
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="zip" name="zip" placeholder="Zip" class="form-control" value="<%= @project.zip %>">
+            </div>
+          </div>
+
+          <!-- Label and input for state -->
+          <div class="form-group">
+            <label for="state" class="col-sm-2 control-label">
+              State
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="state" name="state" placeholder="State" class="form-control" value="<%= @project.state %>">
+            </div>
+          </div>
+
+          <!-- Label and input for description -->
+          <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">
+              Description
+            </label>
+            <div class="col-sm-10">
+              <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @project.description %></textarea>
+            </div>
+          </div>
+
+          <!-- Label and input for completed_on -->
+          <div class="form-group">
+            <label for="completed_on" class="col-sm-2 control-label">
+              Completed on
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="completed_on" name="completed_on" placeholder="Completed on" class="form-control" value="<%= @project.completed_on %>">
+            </div>
+          </div>
+
+          <!-- Label and input for cost_amount_description -->
+          <div class="form-group">
+            <label for="cost_amount_description" class="col-sm-2 control-label">
+              Cost amount description
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="cost_amount_description" name="cost_amount_description" placeholder="Cost amount description" class="form-control" value="<%= @project.cost_amount_description %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-success">
+                Create Project
+              </button>
+              or
+              <a href="/projects">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->

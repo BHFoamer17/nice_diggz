@@ -1,0 +1,73 @@
+<!-- Responsive panel example-->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Project #<%= @project.id %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <dl class="dl-horizontal">
+              <dt>Service provider</dt>
+              <dd><%= @project.service_provider_id %></dd>
+
+              <dt>Name</dt>
+              <dd><%= @project.name %></dd>
+
+              <dt>Space type</dt>
+              <dd><%= @project.space_type_id %></dd>
+
+              <dt>Category</dt>
+              <dd><%= @project.category_id %></dd>
+
+              <dt>Cost amount</dt>
+              <dd><%= @project.cost_amount %></dd>
+
+              <dt>Street address 1</dt>
+              <dd><%= @project.street_address_1 %></dd>
+
+              <dt>Street address 2</dt>
+              <dd><%= @project.street_address_2 %></dd>
+
+              <dt>City</dt>
+              <dd><%= @project.city %></dd>
+
+              <dt>Zip</dt>
+              <dd><%= @project.zip %></dd>
+
+              <dt>State</dt>
+              <dd><%= @project.state %></dd>
+
+              <dt>Description</dt>
+              <dd><%= @project.description %></dd>
+
+              <dt>Completed on</dt>
+              <dd><%= @project.completed_on %></dd>
+
+              <dt>Cost amount description</dt>
+              <dd><%= @project.cost_amount_description %></dd>
+
+            </dl>
+            <div class="btn-group btn-group-justified">
+              <a href="/projects" class="btn btn-primary">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+
+              <a href="/projects/<%= @project.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+
+              <a href="/delete_project/<%= @project.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->
