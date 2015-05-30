@@ -1,0 +1,91 @@
+<!-- Responsive panel example-->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Service Provider #<%= @service_provider.id %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <dl class="dl-horizontal">
+              <dt>Street address 2</dt>
+              <dd><%= @service_provider.street_address_2 %></dd>
+
+              <dt>Company description</dt>
+              <dd><%= @service_provider.company_description %></dd>
+
+              <dt>Company email address</dt>
+              <dd><%= @service_provider.company_email_address %></dd>
+
+              <dt>Company phone number</dt>
+              <dd><%= @service_provider.company_phone_number %></dd>
+
+              <dt>Awards</dt>
+              <dd><%= @service_provider.awards %></dd>
+
+              <dt>Last name</dt>
+              <dd><%= @service_provider.last_name %></dd>
+
+              <dt>Cell number</dt>
+              <dd><%= @service_provider.cell_number %></dd>
+
+              <dt>Company name</dt>
+              <dd><%= @service_provider.company_name %></dd>
+
+              <dt>Street address 1</dt>
+              <dd><%= @service_provider.street_address_1 %></dd>
+
+              <dt>City</dt>
+              <dd><%= @service_provider.city %></dd>
+
+              <dt>Zip code</dt>
+              <dd><%= @service_provider.zip_code %></dd>
+
+              <dt>Industry type</dt>
+              <dd><%= @service_provider.industry_type_id %></dd>
+
+              <dt>Industry experience</dt>
+              <dd><%= @service_provider.industry_experience %></dd>
+
+              <dt>Certificates</dt>
+              <dd><%= @service_provider.certificates %></dd>
+
+              <dt>First name</dt>
+              <dd><%= @service_provider.first_name %></dd>
+
+              <dt>Better business bureau rating</dt>
+              <dd><%= @service_provider.better_business_bureau_rating %></dd>
+
+              <dt>Photo face</dt>
+              <dd><%= @service_provider.photo_face %></dd>
+
+              <dt>Photo banner</dt>
+              <dd><%= @service_provider.photo_banner %></dd>
+
+              <dt>Website</dt>
+              <dd><%= @service_provider.website %></dd>
+
+            </dl>
+            <div class="btn-group btn-group-justified">
+              <a href="/service_providers" class="btn btn-primary">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+
+              <a href="/service_providers/<%= @service_provider.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+
+              <a href="/delete_service_provider/<%= @service_provider.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->

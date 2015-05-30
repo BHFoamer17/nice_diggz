@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  devise_for :service_providers
+
+  # Routes for the Service_provider resource:
+  # CREATE
+  # get "/service_providers/new", :controller => "service_providers", :action => "new"
+  # post "/create_service_provider", :controller => "service_providers", :action => "create"
+
+  # READ
+  get "/service_providers", :controller => "service_providers", :action => "index"
+  get "/service_providers/:id", :controller => "service_providers", :action => "show"
+
+  # UPDATE
+  # get "/service_providers/:id/edit", :controller => "service_providers", :action => "edit"
+  # post "/update_service_provider/:id", :controller => "service_providers", :action => "update"
+
+  # DELETE
+  # get "/delete_service_provider/:id", :controller => "service_providers", :action => "destroy"
+  #------------------------------
+
   # Routes for the Category resource:
   # CREATE
   get "/categories/new", :controller => "categories", :action => "new"
@@ -118,6 +137,5 @@ Rails.application.routes.draw do
   get "/delete_professional_association/:id", :controller => "professional_associations", :action => "destroy"
   #------------------------------
 
-  devise_for :service_providers
-  root 'projects#index'
+  root 'service_providers#index'
 end

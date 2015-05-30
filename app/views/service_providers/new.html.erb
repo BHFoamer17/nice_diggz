@@ -1,0 +1,230 @@
+<!-- Validation failure messages -->
+
+<% if @service_provider.errors.any? %>
+  <% @service_provider.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add Service Provider</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/create_service_provider" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for street_address_2 -->
+          <div class="form-group">
+            <label for="street_address_2" class="col-sm-2 control-label">
+              Street address 2
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="street_address_2" name="street_address_2" placeholder="Street address 2" class="form-control" value="<%= @service_provider.street_address_2 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for company_description -->
+          <div class="form-group">
+            <label for="company_description" class="col-sm-2 control-label">
+              Company description
+            </label>
+            <div class="col-sm-10">
+              <textarea id="company_description" name="company_description" placeholder="Company description" class="form-control" rows="3"><%= @service_provider.company_description %></textarea>
+            </div>
+          </div>
+
+          <!-- Label and input for company_email_address -->
+          <div class="form-group">
+            <label for="company_email_address" class="col-sm-2 control-label">
+              Company email address
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="company_email_address" name="company_email_address" placeholder="Company email address" class="form-control" value="<%= @service_provider.company_email_address %>">
+            </div>
+          </div>
+
+          <!-- Label and input for company_phone_number -->
+          <div class="form-group">
+            <label for="company_phone_number" class="col-sm-2 control-label">
+              Company phone number
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="company_phone_number" name="company_phone_number" placeholder="Company phone number" class="form-control" value="<%= @service_provider.company_phone_number %>">
+            </div>
+          </div>
+
+          <!-- Label and input for awards -->
+          <div class="form-group">
+            <label for="awards" class="col-sm-2 control-label">
+              Awards
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="awards" name="awards" placeholder="Awards" class="form-control" value="<%= @service_provider.awards %>">
+            </div>
+          </div>
+
+          <!-- Label and input for last_name -->
+          <div class="form-group">
+            <label for="last_name" class="col-sm-2 control-label">
+              Last name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="last_name" name="last_name" placeholder="Last name" class="form-control" value="<%= @service_provider.last_name %>">
+            </div>
+          </div>
+
+          <!-- Label and input for cell_number -->
+          <div class="form-group">
+            <label for="cell_number" class="col-sm-2 control-label">
+              Cell number
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="cell_number" name="cell_number" placeholder="Cell number" class="form-control" value="<%= @service_provider.cell_number %>">
+            </div>
+          </div>
+
+          <!-- Label and input for company_name -->
+          <div class="form-group">
+            <label for="company_name" class="col-sm-2 control-label">
+              Company name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="company_name" name="company_name" placeholder="Company name" class="form-control" value="<%= @service_provider.company_name %>">
+            </div>
+          </div>
+
+          <!-- Label and input for street_address_1 -->
+          <div class="form-group">
+            <label for="street_address_1" class="col-sm-2 control-label">
+              Street address 1
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="street_address_1" name="street_address_1" placeholder="Street address 1" class="form-control" value="<%= @service_provider.street_address_1 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for city -->
+          <div class="form-group">
+            <label for="city" class="col-sm-2 control-label">
+              City
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @service_provider.city %>">
+            </div>
+          </div>
+
+          <!-- Label and input for zip_code -->
+          <div class="form-group">
+            <label for="zip_code" class="col-sm-2 control-label">
+              Zip code
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="zip_code" name="zip_code" placeholder="Zip code" class="form-control" value="<%= @service_provider.zip_code %>">
+            </div>
+          </div>
+
+          <!-- Label and input for industry_type_id -->
+          <div class="form-group">
+            <label for="industry_type_id" class="col-sm-2 control-label">
+              Industry type
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="industry_type_id" name="industry_type_id" placeholder="Industry type" class="form-control" value="<%= @service_provider.industry_type_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for industry_experience -->
+          <div class="form-group">
+            <label for="industry_experience" class="col-sm-2 control-label">
+              Industry experience
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="industry_experience" name="industry_experience" placeholder="Industry experience" class="form-control" value="<%= @service_provider.industry_experience %>">
+            </div>
+          </div>
+
+          <!-- Label and input for certificates -->
+          <div class="form-group">
+            <label for="certificates" class="col-sm-2 control-label">
+              Certificates
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="certificates" name="certificates" placeholder="Certificates" class="form-control" value="<%= @service_provider.certificates %>">
+            </div>
+          </div>
+
+          <!-- Label and input for first_name -->
+          <div class="form-group">
+            <label for="first_name" class="col-sm-2 control-label">
+              First name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="first_name" name="first_name" placeholder="First name" class="form-control" value="<%= @service_provider.first_name %>">
+            </div>
+          </div>
+
+          <!-- Label and input for better_business_bureau_rating -->
+          <div class="form-group">
+            <label for="better_business_bureau_rating" class="col-sm-2 control-label">
+              Better business bureau rating
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="better_business_bureau_rating" name="better_business_bureau_rating" placeholder="Better business bureau rating" class="form-control" value="<%= @service_provider.better_business_bureau_rating %>">
+            </div>
+          </div>
+
+          <!-- Label and input for photo_face -->
+          <div class="form-group">
+            <label for="photo_face" class="col-sm-2 control-label">
+              Photo face
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="photo_face" name="photo_face" placeholder="Photo face" class="form-control" value="<%= @service_provider.photo_face %>">
+            </div>
+          </div>
+
+          <!-- Label and input for photo_banner -->
+          <div class="form-group">
+            <label for="photo_banner" class="col-sm-2 control-label">
+              Photo banner
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="photo_banner" name="photo_banner" placeholder="Photo banner" class="form-control" value="<%= @service_provider.photo_banner %>">
+            </div>
+          </div>
+
+          <!-- Label and input for website -->
+          <div class="form-group">
+            <label for="website" class="col-sm-2 control-label">
+              Website
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="website" name="website" placeholder="Website" class="form-control" value="<%= @service_provider.website %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-success">
+                Create Service Provider
+              </button>
+              or
+              <a href="/service_providers">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->
