@@ -1,4 +1,72 @@
 Rails.application.routes.draw do
+  # Routes for the Category resource:
+  # CREATE
+  get "/categories/new", :controller => "categories", :action => "new"
+  post "/create_category", :controller => "categories", :action => "create"
+
+  # READ
+  get "/categories", :controller => "categories", :action => "index"
+  get "/categories/:id", :controller => "categories", :action => "show"
+
+  # UPDATE
+  get "/categories/:id/edit", :controller => "categories", :action => "edit"
+  post "/update_category/:id", :controller => "categories", :action => "update"
+
+  # DELETE
+  get "/delete_category/:id", :controller => "categories", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Space_type resource:
+  # CREATE
+  get "/space_types/new", :controller => "space_types", :action => "new"
+  post "/create_space_type", :controller => "space_types", :action => "create"
+
+  # READ
+  get "/space_types", :controller => "space_types", :action => "index"
+  get "/space_types/:id", :controller => "space_types", :action => "show"
+
+  # UPDATE
+  get "/space_types/:id/edit", :controller => "space_types", :action => "edit"
+  post "/update_space_type/:id", :controller => "space_types", :action => "update"
+
+  # DELETE
+  get "/delete_space_type/:id", :controller => "space_types", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Industry_type resource:
+  # CREATE
+  get "/industry_types/new", :controller => "industry_types", :action => "new"
+  post "/create_industry_type", :controller => "industry_types", :action => "create"
+
+  # READ
+  get "/industry_types", :controller => "industry_types", :action => "index"
+  get "/industry_types/:id", :controller => "industry_types", :action => "show"
+
+  # UPDATE
+  get "/industry_types/:id/edit", :controller => "industry_types", :action => "edit"
+  post "/update_industry_type/:id", :controller => "industry_types", :action => "update"
+
+  # DELETE
+  get "/delete_industry_type/:id", :controller => "industry_types", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Membership resource:
+  # CREATE
+  get "/memberships/new", :controller => "memberships", :action => "new"
+  post "/create_membership", :controller => "memberships", :action => "create"
+
+  # READ
+  get "/memberships", :controller => "memberships", :action => "index"
+  get "/memberships/:id", :controller => "memberships", :action => "show"
+
+  # UPDATE
+  get "/memberships/:id/edit", :controller => "memberships", :action => "edit"
+  post "/update_membership/:id", :controller => "memberships", :action => "update"
+
+  # DELETE
+  get "/delete_membership/:id", :controller => "memberships", :action => "destroy"
+  #------------------------------
+
   # Routes for the Photo resource:
   # CREATE
   get "/photos/new", :controller => "photos", :action => "new"

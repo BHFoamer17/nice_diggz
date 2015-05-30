@@ -11,7 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530201454) do
+ActiveRecord::Schema.define(version: 20150530201839) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "industry_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "professional_association_id"
+    t.integer  "service_provider_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.boolean  "primary"
+    t.integer  "project_id"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "professional_associations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.integer  "service_provider_id"
+    t.string   "name"
+    t.integer  "space_type_id"
+    t.integer  "category_id"
+    t.float    "cost_amount"
+    t.string   "street_address_1"
+    t.string   "street_address_2"
+    t.string   "city"
+    t.string   "zip"
+    t.string   "state"
+    t.text     "description"
+    t.date     "completed_on"
+    t.string   "cost_amount_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "service_providers", force: :cascade do |t|
     t.string   "email",                         default: "", null: false
@@ -49,5 +100,11 @@ ActiveRecord::Schema.define(version: 20150530201454) do
 
   add_index "service_providers", ["email"], name: "index_service_providers_on_email", unique: true
   add_index "service_providers", ["reset_password_token"], name: "index_service_providers_on_reset_password_token", unique: true
+
+  create_table "space_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
