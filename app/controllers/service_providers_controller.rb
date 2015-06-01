@@ -42,6 +42,7 @@ class ServiceProvidersController < ApplicationController
 
   def edit
     @service_provider = ServiceProvider.find(params[:id])
+    @project = Project.new
   end
 
   def update
