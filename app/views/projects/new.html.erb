@@ -22,7 +22,10 @@
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-          <!-- Label and input for space_type_id -->
+          <!-- Hidden service_provider_id-->
+          <input type="hidden" name="service_provider_id" value="<%= current_service_provider.id %>">
+
+          <!-- Label and input for service_provider_id -->
           <div class="form-group">
             <label for="service_provider_id" class="col-sm-2 control-label">
               Service Provider

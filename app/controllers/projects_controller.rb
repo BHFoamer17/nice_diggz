@@ -1,8 +1,9 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.all
+    # @projects = Project.all
     # if current.service_provider != nil
     # @projects = project.where({:service_provider_id => current_service_provider.id})
+    @projects = current_service_provider.projects
     # else
     # @projects = Project.all
     # end
@@ -18,7 +19,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new
-    @project.service_provider_id = :current_service_provider_id
+    @project.service_provider_id = params[:service_provider_id]
     @project.name = params[:name]
     @project.space_type_id = params[:space_type_id]
     @project.category_id = params[:category_id]
