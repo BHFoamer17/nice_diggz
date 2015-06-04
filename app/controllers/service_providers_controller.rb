@@ -1,14 +1,40 @@
 class ServiceProvidersController < ApplicationController
   def index
+    raise params.inspect
     @service_providers = ServiceProvider.all
+
+    # params[:industry_type_ids]
+    # loop through each id
+    # find service providers where industry_type_id is id
+    # add groups together
+    # @service_providers = (@providers1 + @providers2).uniq
+
+    if params[:industry_type_id].present?
+      @service_providers = @service_providers.where(:industry_type_id => params[:industry_type_id])
+    end
+
+    if params[:space_type_id].present?
+      @service_providers = @service_providers.where(:space_type_id => params[:space_type_id])
+    end
+
+    if params[:city].present?
+      @service_providers = @service_providers.where(:city => params[:city])
+    end
+
+    if params[:better_business_bureau_rating].present?
+      @service_providers = @service_providers.where(:better_business_bureau_rating => params[:better_business_bureau_rating])
+    end
   end
 
   def show
     @service_provider = ServiceProvider.find(params[:id])
+    @project = Project.find(params[:id])
+
   end
 
   def new
     @service_provider = ServiceProvider.new
+    @project = Project.new
   end
 
   def create
@@ -32,6 +58,9 @@ class ServiceProvidersController < ApplicationController
     @service_provider.photo_face = params[:photo_face]
     @service_provider.photo_banner = params[:photo_banner]
     @service_provider.website = params[:website]
+    @service_provider.space_type_id = params[:space_type_id]
+    @service_provider.state = params[:state]
+    @service_provider.personal_email_address = params[:personal_email_address]
 
     if @service_provider.save
       redirect_to "/service_providers", :notice => "Service provider created successfully."
@@ -67,6 +96,9 @@ class ServiceProvidersController < ApplicationController
     @service_provider.photo_face = params[:photo_face]
     @service_provider.photo_banner = params[:photo_banner]
     @service_provider.website = params[:website]
+    @service_provider.space_type_id = params[:space_type_id]
+    @service_provider.state = params[:state]
+    @service_provider.personal_email_address = params[:personal_email_address]
 
     if @service_provider.save
       redirect_to "/service_providers", :notice => "Service provider updated successfully."

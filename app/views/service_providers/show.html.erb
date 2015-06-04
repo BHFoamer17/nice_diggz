@@ -1,3 +1,104 @@
+<head>
+  <style>
+
+.main-jumbotron {
+  background: url("chicago-dusk.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+
+/*.navbar-bottom {
+  margin-bottom: 0px;
+  border-radius: 0px;
+  margin-top: 0px;
+}*/
+
+.img-sizing {
+  height: 175px;
+  width: 175px;
+  position: left;
+}
+
+.margin {
+  margin-bottom: 0px;
+}
+
+
+.review-img{
+  height: 64px;
+  width: 64px;
+}
+
+.img-alignment{
+  float: left;
+ }
+
+.review-margin {
+  margin-bottom: 10px;
+}
+  </style>
+
+
+</head>
+
+<!--Page Banner-->
+  <div class="main-jumbotron" >
+  <div class="container">
+    <img source="@service_provider.photo_banner" alt="..." class="img-jumbotron">
+    <!--Is there any way I can position the thumbnail image-->
+    <img src="<%= @service_provider.photo_face %>" class="img-thumbnail img-sizing img-alignment">
+      <h1><%= @service_provider.company_name %></h1>
+      <p><%= @service_provider.industry_type.name %></p>
+      <p><%= @service_provider.city %><%= @service_provider.state %></p>
+    </div>
+  </div>
+
+
+   <!--PROJECTS: Thumbnails To Show Projects-->
+   <div class="container">
+       <div class="row">
+           <div class="col-xs-3">
+           <h3>Projects</h3>
+           </div>
+       </div>
+   </div>
+
+   <div class="container">
+     <div class="row">
+   <% @service_provider.projects.each do |project| %>
+       <div class="col-sm-6 col-md-4">
+         <div class="thumbnail">
+           <img src="project.photo_id" alt="...">
+           <h3 class="thumbnail-title"> #<%= project.name %></h3>
+           <div class="thumbnail-body">
+             <dl>
+               <dt>Company name</dt>
+               <dd><%= @service_provider.company_name %></dd>
+             </dl>
+           </div>
+         </div>
+       </div>
+       <% end %>
+     </div>
+   </div>
+
+   <div class="container">
+       <div class="row">
+           <div class="col-xs-12">
+             <div class="col-sm-6 col-md-4">
+               <div class="thumbnail">
+                 <img src="project.photo_id" alt="...">
+                 <div class="caption">
+                   <h3><%= @project.name %></h3>
+                   <p><%= @project.description %></p>
+                   <p><a href="#" class="btn btn-lg btn-success btn-block" data-toggle="modal" data-target="#largeModal">Click to open Model</a></p>
+                 </div>
+               </div>
+             </div>
+
+
+
+
 <!-- Responsive panel example-->
 
 <div class="row">
@@ -58,9 +159,6 @@
               <dt>Better business bureau rating</dt>
               <dd><%= @service_provider.better_business_bureau_rating %></dd>
 
-              <dt>Photo face</dt>
-              <dd><%= @service_provider.photo_face %></dd>
-
               <dt>Photo banner</dt>
               <dd><%= @service_provider.photo_banner %></dd>
 
@@ -68,6 +166,16 @@
               <dd><%= @service_provider.website %></dd>
 
             </dl>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-3">
+              <label for="photo_face">Upload Photo</label>
+                <a href="#" class="thumbnail">
+                <img src="<%= @service_provider.photo_face %>">
+                </a>
+              </div>
+            </div>
+
             <div class="btn-group btn-group-justified">
               <a href="/service_providers" class="btn btn-primary">
                 <i class="fa fa-chevron-left"></i>

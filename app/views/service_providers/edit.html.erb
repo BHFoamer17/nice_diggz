@@ -9,226 +9,198 @@
   <% end %>
 <% end %>
 
-<!-- Responsive panel example -->
 
-<div class="row">
-  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Edit Service Provider #<%= @service_provider.id %></h3>
+  <form enctype="multipart/form-data" action="/update_service_provider/<%= @service_provider.id %>" method="post">
+    <!-- Hidden input for authenticity token to protect from forgery -->
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Company Information</h3>
       </div>
-      <div class="panel-body">
-        <form action="/update_service_provider/<%= @service_provider.id %>" method="post" class="form-horizontal">
-          <!-- Hidden input for authenticity token to protect from forgery -->
-          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-          <!-- Label and input for street_address_2 -->
-          <div class="form-group">
-            <label for="street_address_2" class="col-sm-2 control-label">
-              Street address 2
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="street_address_2" name="street_address_2" placeholder="Street address 2" class="form-control" value="<%= @service_provider.street_address_2 %>">
-            </div>
-          </div>
-
-          <!-- Label and input for company_description -->
-          <div class="form-group">
-            <label for="company_description" class="col-sm-2 control-label">
-              Company description
-            </label>
-            <div class="col-sm-10">
-              <textarea id="company_description" name="company_description" placeholder="Company description" class="form-control" rows="3"><%= @service_provider.company_description %></textarea>
-            </div>
-          </div>
-
-          <!-- Label and input for company_email_address -->
-          <div class="form-group">
-            <label for="company_email_address" class="col-sm-2 control-label">
-              Company email address
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="company_email_address" name="company_email_address" placeholder="Company email address" class="form-control" value="<%= @service_provider.company_email_address %>">
-            </div>
-          </div>
-
-          <!-- Label and input for company_phone_number -->
-          <div class="form-group">
-            <label for="company_phone_number" class="col-sm-2 control-label">
-              Company phone number
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="company_phone_number" name="company_phone_number" placeholder="Company phone number" class="form-control" value="<%= @service_provider.company_phone_number %>">
-            </div>
-          </div>
-
-          <!-- Label and input for awards -->
-          <div class="form-group">
-            <label for="awards" class="col-sm-2 control-label">
-              Awards
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="awards" name="awards" placeholder="Awards" class="form-control" value="<%= @service_provider.awards %>">
-            </div>
-          </div>
-
-          <!-- Label and input for last_name -->
-          <div class="form-group">
-            <label for="last_name" class="col-sm-2 control-label">
-              Last name
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="last_name" name="last_name" placeholder="Last name" class="form-control" value="<%= @service_provider.last_name %>">
-            </div>
-          </div>
-
-          <!-- Label and input for cell_number -->
-          <div class="form-group">
-            <label for="cell_number" class="col-sm-2 control-label">
-              Cell number
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="cell_number" name="cell_number" placeholder="Cell number" class="form-control" value="<%= @service_provider.cell_number %>">
-            </div>
-          </div>
-
-          <!-- Label and input for company_name -->
-          <div class="form-group">
-            <label for="company_name" class="col-sm-2 control-label">
-              Company name
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="company_name" name="company_name" placeholder="Company name" class="form-control" value="<%= @service_provider.company_name %>">
-            </div>
-          </div>
-
-          <!-- Label and input for street_address_1 -->
-          <div class="form-group">
-            <label for="street_address_1" class="col-sm-2 control-label">
-              Street address 1
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="street_address_1" name="street_address_1" placeholder="Street address 1" class="form-control" value="<%= @service_provider.street_address_1 %>">
-            </div>
-          </div>
-
-          <!-- Label and input for city -->
-          <div class="form-group">
-            <label for="city" class="col-sm-2 control-label">
-              City
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @service_provider.city %>">
-            </div>
-          </div>
-
-          <!-- Label and input for zip_code -->
-          <div class="form-group">
-            <label for="zip_code" class="col-sm-2 control-label">
-              Zip code
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="zip_code" name="zip_code" placeholder="Zip code" class="form-control" value="<%= @service_provider.zip_code %>">
-            </div>
-          </div>
-
-          <!-- Label and input for industry_type_id -->
-          <div class="form-group">
-            <label for="industry_type_id" class="col-sm-2 control-label">
-              Industry Type
-            </label>
-            <div class="col-sm-10">
-              <%= select_tag(:industry_type_id, options_from_collection_for_select(IndustryType.all, :id, :name, @service_provider.industry_type_id), :class => "form-control") %>
-            </div>
-          </div>
-
-          <!-- Label and input for industry_experience -->
-          <div class="form-group">
-            <label for="industry_experience" class="col-sm-2 control-label">
-              Industry experience
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="industry_experience" name="industry_experience" placeholder="Industry experience" class="form-control" value="<%= @service_provider.industry_experience %>">
-            </div>
-          </div>
-
-          <!-- Label and input for certificates -->
-          <div class="form-group">
-            <label for="certificates" class="col-sm-2 control-label">
-              Certificates
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="certificates" name="certificates" placeholder="Certificates" class="form-control" value="<%= @service_provider.certificates %>">
-            </div>
-          </div>
-
-          <!-- Label and input for first_name -->
-          <div class="form-group">
-            <label for="first_name" class="col-sm-2 control-label">
-              First name
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="first_name" name="first_name" placeholder="First name" class="form-control" value="<%= @service_provider.first_name %>">
-            </div>
-          </div>
-
-          <!-- Label and input for better_business_bureau_rating -->
-          <div class="form-group">
-            <label for="better_business_bureau_rating" class="col-sm-2 control-label">
-              Better business bureau rating
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="better_business_bureau_rating" name="better_business_bureau_rating" placeholder="Better business bureau rating" class="form-control" value="<%= @service_provider.better_business_bureau_rating %>">
-            </div>
-          </div>
-
-          <!-- Label and input for photo_face -->
-          <div class="form-group">
-            <label for="photo_face" class="col-sm-2 control-label">
-              Photo face
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="photo_face" name="photo_face" placeholder="Photo face" class="form-control" value="<%= @service_provider.photo_face %>">
-            </div>
-          </div>
-
-          <!-- Label and input for photo_banner -->
-          <div class="form-group">
-            <label for="photo_banner" class="col-sm-2 control-label">
-              Photo banner
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="photo_banner" name="photo_banner" placeholder="Photo banner" class="form-control" value="<%= @service_provider.photo_banner %>">
-            </div>
-          </div>
-
-          <!-- Label and input for website -->
-          <div class="form-group">
-            <label for="website" class="col-sm-2 control-label">
-              Website
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="website" name="website" placeholder="Website" class="form-control" value="<%= @service_provider.website %>">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button class="btn btn-warning">
-                Update Service Provider
-              </button>
-              or
-              <a href="/service_providers/<%= @service_provider.id %>">Cancel</a>
-            </div>
-          </div>
-        </form>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="form-group">
+          <label for="photo_face">Upload Photo</label>
+            <input id="photo_face" input name="photo_face" type="file">
+        </div>
       </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="form-group">
+          <label for="company_name">Company Name</label>
+          <input type="text" id="company_name" name="company_name" placeholder="Company Name" class="form-control" value="<%= @service_provider.company_name %>">
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="form-group">
+        <label for="industry_type_id">Industry Type</label>
+          <%= select_tag(:industry_type_id, options_from_collection_for_select(IndustryType.all, :id, :name, @service_provider.industry_type_id), :class => "form-control") %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="form-group">
+          <label for="industry_experience">Industry Experience</label>
+          <input type="text" id="industry_experience" name="industry_experience" placeholder="Industry Expeirence" class="form-control" value  ="<%= @service_provider.industry_experience %>">
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <div class="form-group">
+        <label for="space_type_id">Space Type</label>
+          <%= select_tag(:space_type_id, options_from_collection_for_select(SpaceType.all, :id, :name, @service_provider.space_type_id), :class => "form-control") %>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-md-4">
+        <div class="form-group">
+          <label for="better_business_bureau_rating">Better Business Bureau Rating</label>
+          <input type="text" id="better_business_bureau_rating" name="better_business_bureau_rating" placeholder="Better Business Bureau Rating" class="form-control" value  ="<%= @service_provider.better_business_bureau_rating %>">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="form-group">
+          <label for="awards">Awards</label>
+          <input type="text" id="awards" name="awards" placeholder="Awards" class="form-control" value  ="<%= @service_provider.awards %>">
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="form-group">
+          <label for="certificates">Certificates</label>
+          <input type="text" id="awards" name="awards" placeholder="Certificates" class="form-control" value  ="<%= @service_provider.certificates %>">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <label for="company_description">Company Description</label>
+        <textarea class="form-control" rows="3" value="<%= @service_provider.company_description %>"></textarea>
+      </div>
+    </div>
+
+
+    <!--CONTACT INFORMATION-->
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Contact Information</h3>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+        <div class="form-group">
+          <label for="street_address_1">Street Address 1</label>
+          <input type="text" id="street_address_1" name="street_address_1" placeholder="Street Address" class="form-control" value="<%= @service_provider.street_address_1 %>">
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @service_provider.city %>">
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" id="state" name="state" placeholder="State" class="form-control" value="<%= @service_provider.state %>">
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="form-group">
+          <label for="zip_code">Zip Code</label>
+          <input type="text" id="zip_code" name="zip_code" placeholder="Zip Code" class="form-control" value="<%= @service_provider.zip_code %>">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+     <div class="col-sm-6 col-md-3">
+      <div class="form-group">
+        <label for="street_address_2">Street Address 2</label>
+        <input type="text" id="street_address_2" name="street_address_2" placeholder="Street address 2" class="form-control" value="<%= @service_provider.street_address_2 %>">
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="form-group">
+        <label for="company_phone_number">Office Number</label>
+        <input type="text" id="company_phone_number" name="company_phone_number" placeholder="Office Number" class="form-control" value="<%= @service_provider.company_phone_number %>">
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="form-group">
+        <label for="company_email_address">Company Email</label>
+        <input type="text" id="company_email_address" name="company_email_address" placeholder="Company Email" class="form-control" value="<%= @service_provider.company_email_address %>">
+      </div>
+    </div> <div class="col-sm-6 col-md-3">
+    <div class="form-group">
+      <label for="website">Website</label>
+      <input type="text" id="website" name="website" placeholder="Website" class="form-control" value="<%= @service_provider.website %>">
     </div>
   </div>
 </div>
 
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Personal Information</h3>
+  </div>
+</div>
+<div class="row">
+ <div class="col-sm-6 col-md-3">
+  <div class="form-group">
+    <label for="first_name">First Name</label>
+    <input type="text" id="first_name" name="first_name" placeholder="First Name" class="form-control" value="<%= @service_provider.first_name %>">
+  </div>
+</div>
+ <div class="col-sm-6 col-md-3">
+  <div class="form-group">
+    <label for="last_name">Last Name</label>
+    <input type="text" id="last_name" name="last_name" placeholder="Last Name" class="form-control" value="<%= @service_provider.last_name %>">
+  </div>
+</div>
+ <div class="col-sm-6 col-md-3">
+  <div class="form-group">
+    <label for="cell_number">Cell Number</label>
+    <input type="text" id="cell_number" name="cell_number" placeholder="Cell Number" class="form-control" value="<%= @service_provider.cell_number %>">
+  </div>
+</div>
+ <div class="col-sm-6 col-md-3">
+  <div class="form-group">
+    <label for="personal_email_address">Email Address</label>
+    <input type="text" id="personal_email_address" name="personal_email_address" placeholder="Email Address" class="form-control" value="<%= @service_provider.personal_email_address %>">
+  </div>
+</div>
+</div>
 
-<!-- End responsive panel example -->
+<br>
+
+<div class="row">
+<div class="form-group">
+<div class="col-md-12">
+    <button class="btn btn-warning">
+      Update Service Provider
+    </button>
+    or
+    <a href="/service_providers/<%= @service_provider.id %>">Cancel</a>
+  </div>
+</div>
+</div>
+</div>
+</form>
+
+<br>
 
 <!-- Validation failure messages -->
 
@@ -244,7 +216,7 @@
 <!-- Responsive panel example -->
 
 <div class="row">
-  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+  <div class="col-sm-offset-1 col-sm-10 col-md-10">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Add Project</h3>
@@ -254,11 +226,7 @@
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-
-
           <input type="hidden" name="service_provider_id" value="<%= current_service_provider.id %>">
-
-
 
           <!-- Label and input for name -->
           <div class="form-group">
@@ -290,13 +258,23 @@
             </div>
           </div>
 
-          <!-- Label and input for cost_amount -->
+          <!-- Label and input for description -->
           <div class="form-group">
-            <label for="cost_amount" class="col-sm-2 control-label">
-              Cost amount
+            <label for="description" class="col-sm-2 control-label">
+              Description
             </label>
             <div class="col-sm-10">
-              <input type="text" id="cost_amount" name="cost_amount" placeholder="Cost amount" class="form-control" value="<%= @project.cost_amount %>">
+              <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @project.description %></textarea>
+            </div>
+          </div>
+
+          <!-- Label and input for completed_on -->
+          <div class="form-group">
+            <label for="completed_on" class="col-sm-2 control-label">
+              Completed on
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="completed_on" name="completed_on" placeholder="Completed on" class="form-control" value="<%= @project.completed_on %>">
             </div>
           </div>
 
@@ -330,16 +308,6 @@
             </div>
           </div>
 
-          <!-- Label and input for zip -->
-          <div class="form-group">
-            <label for="zip" class="col-sm-2 control-label">
-              Zip
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="zip" name="zip" placeholder="Zip" class="form-control" value="<%= @project.zip %>">
-            </div>
-          </div>
-
           <!-- Label and input for state -->
           <div class="form-group">
             <label for="state" class="col-sm-2 control-label">
@@ -350,23 +318,23 @@
             </div>
           </div>
 
-          <!-- Label and input for description -->
+          <!-- Label and input for zip -->
           <div class="form-group">
-            <label for="description" class="col-sm-2 control-label">
-              Description
+            <label for="zip" class="col-sm-2 control-label">
+              Zip
             </label>
             <div class="col-sm-10">
-              <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @project.description %></textarea>
+              <input type="text" id="zip" name="zip" placeholder="Zip" class="form-control" value="<%= @project.zip %>">
             </div>
           </div>
 
-          <!-- Label and input for completed_on -->
+          <!-- Label and input for cost_amount -->
           <div class="form-group">
-            <label for="completed_on" class="col-sm-2 control-label">
-              Completed on
+            <label for="cost_amount" class="col-sm-2 control-label">
+              Cost amount
             </label>
             <div class="col-sm-10">
-              <input type="text" id="completed_on" name="completed_on" placeholder="Completed on" class="form-control" value="<%= @project.completed_on %>">
+              <input type="text" id="cost_amount" name="cost_amount" placeholder="Cost amount" class="form-control" value="<%= @project.cost_amount %>">
             </div>
           </div>
 

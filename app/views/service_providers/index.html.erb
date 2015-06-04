@@ -1,85 +1,221 @@
+
+<head>
+<style>
+
+     .bottomborder {
+       border-bottom: gray 1px solid;
+    }
+
+    .column {
+      float: left;
+      width: 33%;
+      padding: 0px;
+    }
+
+    .card {
+      background-color: gray;
+    }
+
+
+    .column2 {
+      float: left;
+      width: 67%;
+      padding: 10px;
+    }
+
+    .content-container {
+      width: 960px;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+</style>
+</head>
+
 <div class="page-header">
   <h1>
-    Service providers
+    Service Providers
     <a href="/service_providers/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
   </h1>
 </div>
+
 
 <!-- Responsive, Isotope-based layout example -->
 
 <div class="row">
   <div class="col-xs-12">
-    <input type="text" id="quicksearch" placeholder="Search Service providers (start typing)" class="form-control">
+    <input type="text" id="quicksearch" placeholder="Search Service Providers (start typing)" class="form-control">
   </div>
 </div>
 
-<hr>
+<!--SEARCH COLUMN -->
+<div class="content-container">
+<h2>FILTER</h2>
+  <form action='/service_providers'>
+    <div class="column">
+      <p>This is where I want to put the result options.</p>
+      <div class="bottomborder"></div>
+      <!--ADDRESS-->
+<!--       <form class="form-horizontal">
+          <div class="form-group">
+            <label for="InputAddress">Address</label>
+            <input type="text" class="form-control" id="InputAddress" placeholder="Address">
+          </div>
+          <div class="form-group">
+          <label for="MileRadius">Within</label>
+          <select class="form-control">
+            <option>Anywhere</option>
+            <option>5 Miles</option>
+            <option>10 Miles</option>
+            <option>15 Miles</option>
+            <option>20 Miles</option>
+            <option>50 Miles</option>
+            <option>100 Miles</option>
+          </select>
+          </div>
+          <div class="form-group">
+          <button type="submit" class="btn btn-default">Update</button>
+          </div>
+      </form>
+      <div class="bottomborder"></div> -->
 
-<div class="row isotope-container">
-<% @service_providers.each do |service_provider| %>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Service Provider #<%= service_provider.id %></h3>
+      <!--SERVICE PROVIDERS-->
+      <h4>Service Provider</h4>
+      <!-- loop through all industry_types -->
+      <!-- for each industry_type, show a checkbox -->
+      <!-- <label> -->
+      <!-- <input type="checkbox" name="industry_type_ids[]" value="<%#= type.id %>"" -->
+      <!-- <%#= type.name %> -->
+      <!-- </label> -->
+
+      <!-- replace values with ids -->
+      <!-- names need to be industry_type_ids[] so multiple selection will be combined in array -->
+      <% @industry_types.each do |industry_type| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="industry_type_ids[]" value="<%= industry_type.id %>">
+          Attorney
+        </label>
+        <% industry_type.name %>
       </div>
-      <div class="panel-body">
+      <% end %>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="industry_type_id" value="Architect">
+          Architect
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="industry_type_id" value="Broker">
+          Broker
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="industry_type_id" value="Contractor">
+          Contractor
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="industry_type_id" value="Furniture Vendor">
+          Furniture Vendor
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="industry_type_id" value="Interior Designer">
+          Interior Designer
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="industry_type_id" value="Moving Company">
+          Moving Company
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="industry_type_id" value="Office Equipment">
+          Office Equipment
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="industry_type_id" value="Telecommunications">
+          Telecommunications Provider
+        </label>
+      </div>
+      <div class="bottomborder"></div>
+
+      <!--SPACE TYPE-->
+      <h4>Space Type</h4>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="space_type_id" value="Office">
+          Office
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="space_type_id" value="Retail">
+          Retail
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="space_type_id" value="Industrial">
+          Industrial
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="space_type_id" value="Medical">
+          Medical
+        </label>
+      </div>
+      <div class="bottomborder"></div>
+
+      <!--LICENSE-->
+      <h4>License</h4>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="certification_id" value="Certification">
+          Certification
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="better_business_bureau" value="Better Business Bureau">
+          Better Business Bureau
+        </label>
+      </div>
+      <div class="bottomborder"></div>
+      <div class="form-group">
+        <div class="">
+          <input type="submit" value="Filter" class="btn btn-primary">
+        </div>
+      </div>
+    </div>
+</form>
+
+
+<div class="column2">
+<% @service_providers.each do |service_provider| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="<%= service_provider.photo_face %>">
+        <h4 class="thumbnail-title"><%= service_provider.company_name %></h4>
+          <div class="thumbnail-body">
         <dl>
-          <dt>Street address 2</dt>
-          <dd><%= service_provider.street_address_2 %></dd>
-
-          <dt>Company description</dt>
-          <dd><%= service_provider.company_description %></dd>
-
-          <dt>Company email address</dt>
-          <dd><%= service_provider.company_email_address %></dd>
-
-          <dt>Company phone number</dt>
-          <dd><%= service_provider.company_phone_number %></dd>
-
-          <dt>Awards</dt>
-          <dd><%= service_provider.awards %></dd>
-
-          <dt>Last name</dt>
-          <dd><%= service_provider.last_name %></dd>
-
-          <dt>Cell number</dt>
-          <dd><%= service_provider.cell_number %></dd>
-
-          <dt>Company name</dt>
-          <dd><%= service_provider.company_name %></dd>
-
-          <dt>Street address 1</dt>
-          <dd><%= service_provider.street_address_1 %></dd>
-
-          <dt>City</dt>
-          <dd><%= service_provider.city %></dd>
-
-          <dt>Zip code</dt>
-          <dd><%= service_provider.zip_code %></dd>
 
           <dt>Industry type</dt>
-          <dd><%= service_provider.industry_type_id %></dd>
+          <dd><%= service_provider.industry_type.name %></dd>
 
-          <dt>Industry experience</dt>
-          <dd><%= service_provider.industry_experience %></dd>
-
-          <dt>Certificates</dt>
-          <dd><%= service_provider.certificates %></dd>
-
-          <dt>First name</dt>
-          <dd><%= service_provider.first_name %></dd>
-
-          <dt>Better business bureau rating</dt>
-          <dd><%= service_provider.better_business_bureau_rating %></dd>
-
-          <dt>Photo face</dt>
-          <dd><%= service_provider.photo_face %></dd>
-
-          <dt>Photo banner</dt>
-          <dd><%= service_provider.photo_banner %></dd>
-
-          <dt>Website</dt>
-          <dd><%= service_provider.website %></dd>
+          <dt>Space Type</dt>
+          <dd><%= service_provider.space_type.name %></dd>
 
         </dl>
         <div class="btn-group btn-group-justified">
@@ -99,6 +235,7 @@
     </div>
   </div>
 <% end %>
+</div>
 </div>
 
 <!-- You can ignore the following. It's a quick and dirty example of how to get a Pinterest-style layout with quick search. -->
@@ -148,3 +285,7 @@
 </script>
 
 <!-- End responsive, Isotope-based layout example -->
+
+
+
+
