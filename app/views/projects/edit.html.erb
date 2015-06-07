@@ -154,6 +154,13 @@
             </label>
             <div class="col-sm-10">
               <input type="text" id="completed_on" name="completed_on" placeholder="Completed on" class="form-control" value="<%= @project.completed_on %>">
+
+              <div class='input-group date' id='datetimepicker1'>
+                <input type='text' class="form-control" name="completed_on" id="completed_on" value="<%= @project.completed_on %>">>
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -184,3 +191,10 @@
 
 
 <!-- End responsive panel example -->
+
+
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker1').datetimepicker();
+  });
+</script>

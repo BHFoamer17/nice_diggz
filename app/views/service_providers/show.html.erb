@@ -9,6 +9,7 @@
 .main-jumbotron .container {
   color: #EEE;
   background:rgba(0,0,0,0.25);
+  min-height: 300px;
 }
 
 /*.navbar-bottom {
@@ -43,7 +44,7 @@
 
 .thumbnail_padding{
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 75px;
 
 }
 
@@ -59,9 +60,6 @@
       <div class="container">
         <img src="<%= @service_provider.photo_face %>" alt="..." class="img-thumbnail img-sizing img-alignment thumbnail_padding">
         <h1><%= @service_provider.company_name %></h1>
-        <p><%= @service_provider.industry_type.name %></p>
-        <p><%= @service_provider.city %><%= @service_provider.state %></p>
-
       </div>
     </div>
   </div>
