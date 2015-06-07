@@ -2,10 +2,14 @@
   <style>
 
 .main-jumbotron {
-  background: url("chicago-dusk.jpg") no-repeat center center;
+  background: url("<%= @service_provider.photo_banner %>") no-repeat center center;
   background-size: cover;
 }
 
+.main-jumbotron .container {
+  color: #EEE;
+  background:rgba(0,0,0,0.25);
+}
 
 /*.navbar-bottom {
   margin-bottom: 0px;
@@ -36,175 +40,270 @@
 .review-margin {
   margin-bottom: 10px;
 }
+
+.thumbnail_padding{
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+}
+
   </style>
 
 
 </head>
 
 <!--Page Banner-->
-  <div class="main-jumbotron" >
-  <div class="container">
-    <img source="@service_provider.photo_banner" alt="..." class="img-jumbotron">
-    <!--Is there any way I can position the thumbnail image-->
-    <img src="<%= @service_provider.photo_face %>" class="img-thumbnail img-sizing img-alignment">
-      <h1><%= @service_provider.company_name %></h1>
-      <p><%= @service_provider.industry_type.name %></p>
-      <p><%= @service_provider.city %><%= @service_provider.state %></p>
-    </div>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="main-jumbotron" class="jumbotron margin">
+      <div class="container">
+        <img src="<%= @service_provider.photo_face %>" alt="..." class="img-thumbnail img-sizing img-alignment thumbnail_padding">
+        <h1><%= @service_provider.company_name %></h1>
+        <p><%= @service_provider.industry_type.name %></p>
+        <p><%= @service_provider.city %><%= @service_provider.state %></p>
 
-
-   <!--PROJECTS: Thumbnails To Show Projects-->
-   <div class="container">
-       <div class="row">
-           <div class="col-xs-3">
-           <h3>Projects</h3>
-           </div>
-       </div>
-   </div>
-
-   <div class="container">
-     <div class="row">
-   <% @service_provider.projects.each do |project| %>
-       <div class="col-sm-6 col-md-4">
-         <div class="thumbnail">
-           <img src="project.photo_id" alt="...">
-           <h3 class="thumbnail-title"> #<%= project.name %></h3>
-           <div class="thumbnail-body">
-             <dl>
-               <dt>Company name</dt>
-               <dd><%= @service_provider.company_name %></dd>
-             </dl>
-           </div>
-         </div>
-       </div>
-       <% end %>
-     </div>
-   </div>
-
-   <div class="container">
-       <div class="row">
-           <div class="col-xs-12">
-             <div class="col-sm-6 col-md-4">
-               <div class="thumbnail">
-                 <img src="project.photo_id" alt="...">
-                 <div class="caption">
-                   <h3><%= @project.name %></h3>
-                   <p><%= @project.description %></p>
-                   <p><a href="#" class="btn btn-lg btn-success btn-block" data-toggle="modal" data-target="#largeModal">Click to open Model</a></p>
-                 </div>
-               </div>
-             </div>
-
-
-
-
-<!-- Responsive panel example-->
-
-<div class="row">
-  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Service Provider #<%= @service_provider.id %></h3>
       </div>
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-md-12">
-            <dl class="dl-horizontal">
-              <dt>Street address 2</dt>
-              <dd><%= @service_provider.street_address_2 %></dd>
-
-              <dt>Company description</dt>
-              <dd><%= @service_provider.company_description %></dd>
-
-              <dt>Company email address</dt>
-              <dd><%= @service_provider.company_email_address %></dd>
-
-              <dt>Company phone number</dt>
-              <dd><%= @service_provider.company_phone_number %></dd>
-
-              <dt>Awards</dt>
-              <dd><%= @service_provider.awards %></dd>
-
-              <dt>Last name</dt>
-              <dd><%= @service_provider.last_name %></dd>
-
-              <dt>Cell number</dt>
-              <dd><%= @service_provider.cell_number %></dd>
-
-              <dt>Company name</dt>
-              <dd><%= @service_provider.company_name %></dd>
-
-              <dt>Street address 1</dt>
-              <dd><%= @service_provider.street_address_1 %></dd>
-
-              <dt>City</dt>
-              <dd><%= @service_provider.city %></dd>
-
-              <dt>Zip code</dt>
-              <dd><%= @service_provider.zip_code %></dd>
-
-              <dt>Industry type</dt>
-              <dd><%= @service_provider.industry_type_id %></dd>
-
-              <dt>Industry experience</dt>
-              <dd><%= @service_provider.industry_experience %></dd>
-
-              <dt>Certificates</dt>
-              <dd><%= @service_provider.certificates %></dd>
-
-              <dt>First name</dt>
-              <dd><%= @service_provider.first_name %></dd>
-
-              <dt>Better business bureau rating</dt>
-              <dd><%= @service_provider.better_business_bureau_rating %></dd>
-
-              <dt>Photo banner</dt>
-              <dd><%= @service_provider.photo_banner %></dd>
-
-              <dt>Website</dt>
-              <dd><%= @service_provider.website %></dd>
-
-            </dl>
-
-            <div class="row">
-              <div class="col-xs-6 col-md-3">
-              <label for="photo_face">Upload Photo</label>
-                <a href="#" class="thumbnail">
-                <img src="<%= @service_provider.photo_face %>">
-                </a>
-              </div>
-            </div>
-
-            <div class="btn-group btn-group-justified">
-              <a href="/service_providers" class="btn btn-primary">
-                <i class="fa fa-chevron-left"></i>
-              </a>
-
-              <a href="/service_providers/<%= @service_provider.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-
-              <a href="/delete_service_provider/<%= @service_provider.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <ul class="list-group">
-      <% @service_provider.projects.each do |project| %>
-        <li class="list-group-item">
-        <a href="/projects/<%= project.id %>">
-        <%= project.name %>
-        </a>
-        </li>
-        <% end %>
-        </ul>
-
     </div>
   </div>
 </div>
 
-<!-- End responsive panel example -->
+
+<!-- COMPANY INFORMATION -->
+<div class="containter">
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <address>
+        <strong><%= @service_provider.company_name  %></strong><br>
+        <%= @service_provider.street_address_1 %> <%= @service_provider.street_address_2 %><br>
+        <%= @service_provider.city %> <%= @service_provider.state %> <%= @service_provider.zip_code %><br>
+        <abbr title="Phone">P:</abbr> <%= @service_provider.company_phone_number %>
+      </address>
+
+      <address>
+        <strong><%= @service_provider.first_name %> <%= @service_provider.last_name %></strong><br>
+        <a href="mailto:#"><%= @service_provider.personal_email_address %></a><br>
+        <abbr title="Phone">C:</abbr> <%= @service_provider.cell_number %>
+      </address>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+        <h3>Industry Type</h3>
+        <p class="lead"> <%= @service_provider.industry_type.name %></p>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <h3>Space Type</h3>
+        <p class="lead"> <%= @service_provider.space_type.name %></p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-12">
+      <h3>Company Description</h3>
+      <p class="lead"> <%= @service_provider.company_description %></p>
+    </div>
+  </div>
+</div>
+
+
+
+<!--PROJECTS: Thumbnails To Show Projects-->
+<div class="container">
+ <div class="row">
+   <div class="col-xs-3">
+     <h3>Projects</h3>
+   </div>
+ </div>
+</div>
+
+<div class="container">
+ <div class="row">
+   <% @service_provider.projects.each do |project| %>
+   <div class="col-sm-6 col-md-4">
+     <div class="thumbnail">
+       <% project.photos.each do |photo| %>
+       <img src="<%= photo.image %>">
+       <% end %>
+       <div class="caption">
+         <h4><%= project.name %></h4>
+         <p><a href="/projects/<%= project.id %>" class="btn btn-primary" role="button">Button</a></p>
+       </div>
+     </div>
+   </div>
+   <% end %>
+ </div>
+</div>
+
+
+
+<% if current_service_provider.id == @service_provider.id %>
+  <h1>I am the owner of this project. Put new project form here.</h1>
+
+  <!-- Validation failure messages -->
+
+  <% if @project.errors.any? %>
+    <% @project.errors.full_messages.each do |message| %>
+      <div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <!-- Responsive panel example -->
+
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Add Project</h3>
+        </div>
+        <div class="panel-body">
+          <form action="/create_project" method="post" class="form-horizontal">
+            <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+            <!-- Hidden service_provider_id-->
+            <input type="hidden" name="service_provider_id" value="<%= current_service_provider.id %>">
+
+            <!-- Label and input for name -->
+            <div class="form-group">
+              <label for="name" class="col-sm-2 control-label">
+                Name
+              </label>
+              <div class="col-sm-10">
+                <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @project.name %>">
+              </div>
+            </div>
+
+            <!-- Label and input for space_type_id -->
+            <div class="form-group">
+              <label for="space_type_id" class="col-sm-2 control-label">
+                Space Type
+              </label>
+              <div class="col-sm-10">
+                <%= select_tag(:space_type_id, options_from_collection_for_select(SpaceType.all, :id, :name, @project.space_type_id), :class => "form-control") %>
+              </div>
+            </div>
+
+            <!-- Label and input for category_id -->
+            <div class="form-group">
+              <label for="category_id" class="col-sm-2 control-label">
+                Category
+              </label>
+              <div class="col-sm-10">
+                <input type="text" id="category_id" name="category_id" placeholder="Category" class="form-control" value="<%= @project.category_id %>">
+              </div>
+            </div>
+
+            <!-- Label and input for cost_amount -->
+            <div class="form-group">
+              <label for="cost_amount" class="col-sm-2 control-label">
+                Cost amount
+              </label>
+              <div class="col-sm-10">
+                <input type="text" id="cost_amount" name="cost_amount" placeholder="Cost amount" class="form-control" value="<%= @project.cost_amount %>">
+              </div>
+            </div>
+
+            <!-- Label and input for street_address_1 -->
+            <div class="form-group">
+              <label for="street_address_1" class="col-sm-2 control-label">
+                Street address 1
+              </label>
+              <div class="col-sm-10">
+                <input type="text" id="street_address_1" name="street_address_1" placeholder="Street address 1" class="form-control" value="<%= @project.street_address_1 %>">
+              </div>
+            </div>
+
+            <!-- Label and input for street_address_2 -->
+            <div class="form-group">
+              <label for="street_address_2" class="col-sm-2 control-label">
+                Street address 2
+              </label>
+              <div class="col-sm-10">
+                <input type="text" id="street_address_2" name="street_address_2" placeholder="Street address 2" class="form-control" value="<%= @project.street_address_2 %>">
+              </div>
+            </div>
+
+            <!-- Label and input for city -->
+            <div class="form-group">
+              <label for="city" class="col-sm-2 control-label">
+                City
+              </label>
+              <div class="col-sm-10">
+                <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @project.city %>">
+              </div>
+            </div>
+
+            <!-- Label and input for zip -->
+            <div class="form-group">
+              <label for="zip" class="col-sm-2 control-label">
+                Zip
+              </label>
+              <div class="col-sm-10">
+                <input type="text" id="zip" name="zip" placeholder="Zip" class="form-control" value="<%= @project.zip %>">
+              </div>
+            </div>
+
+            <!-- Label and input for state -->
+            <div class="form-group">
+              <label for="state" class="col-sm-2 control-label">
+                State
+              </label>
+              <div class="col-sm-10">
+                <input type="text" id="state" name="state" placeholder="State" class="form-control" value="<%= @project.state %>">
+              </div>
+            </div>
+
+            <!-- Label and input for description -->
+            <div class="form-group">
+              <label for="description" class="col-sm-2 control-label">
+                Description
+              </label>
+              <div class="col-sm-10">
+                <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @project.description %></textarea>
+              </div>
+            </div>
+
+            <!-- Label and input for completed_on -->
+            <div class="form-group">
+              <label for="completed_on" class="col-sm-2 control-label">
+                Completed on
+              </label>
+              <div class="col-sm-10">
+                <input type="text" id="completed_on" name="completed_on" placeholder="Completed on" class="form-control" value="<%= @project.completed_on %>">
+              </div>
+            </div>
+
+            <!-- Label and input for cost_amount_description -->
+            <div class="form-group">
+              <label for="cost_amount_description" class="col-sm-2 control-label">
+                Cost amount description
+              </label>
+              <div class="col-sm-10">
+                <input type="text" id="cost_amount_description" name="cost_amount_description" placeholder="Cost amount description" class="form-control" value="<%= @project.cost_amount_description %>">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-success">
+                  Create Project
+                </button>
+                or
+                <a href="/projects">Cancel</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- End responsive panel example -->
+
+
+<% end %>
+

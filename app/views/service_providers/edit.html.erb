@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-sm-6 col-md-4">
         <div class="form-group">
-          <label for="photo_face">Upload Photo</label>
+          <label for="photo_face">Upload Face Photo</label>
             <input id="photo_face" input name="photo_face" type="file">
         </div>
       </div>
@@ -43,6 +43,12 @@
     <div class="row">
       <div class="col-sm-6 col-md-4">
         <div class="form-group">
+          <label for="photo_banner">Upload Banner Photo</label>
+            <input id="photo_banner" input name="photo_banner" type="file">
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="form-group">
           <label for="industry_experience">Industry Experience</label>
           <input type="text" id="industry_experience" name="industry_experience" placeholder="Industry Expeirence" class="form-control" value  ="<%= @service_provider.industry_experience %>">
         </div>
@@ -54,18 +60,16 @@
           <%= select_tag(:space_type_id, options_from_collection_for_select(SpaceType.all, :id, :name, @service_provider.space_type_id), :class => "form-control") %>
         </div>
       </div>
-
-
-      <div class="col-sm-6 col-md-4">
-        <div class="form-group">
-          <label for="better_business_bureau_rating">Better Business Bureau Rating</label>
-          <input type="text" id="better_business_bureau_rating" name="better_business_bureau_rating" placeholder="Better Business Bureau Rating" class="form-control" value  ="<%= @service_provider.better_business_bureau_rating %>">
-        </div>
-      </div>
     </div>
 
 
     <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="form-group">
+          <label for="better_business_bureau_rating">Better Business Bureau Rating</label>
+          <input type="text" id="better_business_bureau_rating" name="better_business_bureau_rating" placeholder="Better   Business Bureau Rating" class="form-control" value  ="<%= @service_provider.better_business_bureau_rating %>">
+        </div>
+      </div>
       <div class="col-sm-6 col-md-4">
         <div class="form-group">
           <label for="awards">Awards</label>
@@ -222,11 +226,18 @@
         <h3 class="panel-title">Add Project</h3>
       </div>
       <div class="panel-body">
-        <form action="/create_project" method="post" class="form-horizontal">
+        <form enctype="multipart/form-data" action="/create_project" method="post" class="form-horizontal">
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
           <input type="hidden" name="service_provider_id" value="<%= current_service_provider.id %>">
+
+          <!-- Label and input for name -->
+
+            <div class="form-group">
+              <label for="image">Upload Face Photo</label>
+                <input id="image" input name="image" type="file">
+            </div>
 
           <!-- Label and input for name -->
           <div class="form-group">

@@ -1,40 +1,21 @@
 class ServiceProvidersController < ApplicationController
   def index
-    raise params.inspect
-    @service_providers = ServiceProvider.all
 
-    # params[:industry_type_ids]
-    # loop through each id
-    # find service providers where industry_type_id is id
-    # add groups together
-    # @service_providers = (@providers1 + @providers2).uniq
+    @q = ServiceProvider.ransack(params[:q])
+    @service_providers = @q.result(:distring => true).includes(:industry_type, :space_type)
 
-    if params[:industry_type_id].present?
-      @service_providers = @service_providers.where(:industry_type_id => params[:industry_type_id])
-    end
-
-    if params[:space_type_id].present?
-      @service_providers = @service_providers.where(:space_type_id => params[:space_type_id])
-    end
-
-    if params[:city].present?
-      @service_providers = @service_providers.where(:city => params[:city])
-    end
-
-    if params[:better_business_bureau_rating].present?
-      @service_providers = @service_providers.where(:better_business_bureau_rating => params[:better_business_bureau_rating])
-    end
   end
 
   def show
     @service_provider = ServiceProvider.find(params[:id])
-    @project = Project.find(params[:id])
+    @project = Project.new
 
   end
 
   def new
     @service_provider = ServiceProvider.new
     @project = Project.new
+
   end
 
   def create

@@ -1,3 +1,8 @@
 class Photo < ActiveRecord::Base
-  mount_uploader :photo_banner, ImageUploader
+  mount_uploader :image, ImageUploader
+
+  mount_uploader :primary, PrimaryUploader
+
+  belongs_to :project
+
 end

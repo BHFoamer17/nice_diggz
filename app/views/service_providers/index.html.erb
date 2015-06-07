@@ -8,7 +8,7 @@
 
     .column {
       float: left;
-      width: 33%;
+      width: 20%;
       padding: 0px;
     }
 
@@ -19,7 +19,7 @@
 
     .column2 {
       float: left;
-      width: 67%;
+      width: 80%;
       padding: 10px;
     }
 
@@ -44,162 +44,53 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <input type="text" id="quicksearch" placeholder="Search Service Providers (start typing)" class="form-control">
+    <%= search_form_for @q do |f| %>
+      <p class="lead">Narrow results:</p>
+
+      <div class="form-group">
+        <%= f.label :company_name_cont, "Search Company" %>
+        <%= f.text_field :company_name_cont, :class => "form-control", :placeholder => "Search Company" %>
+      </div>
+
+        <%= f.submit :class => "btn btn-primary btn-block" %>
+        <a href="/service_providers" class="btn btn-default btn-block">Clear filters</a>
+      <% end %>
+
   </div>
 </div>
 
 <!--SEARCH COLUMN -->
 <div class="content-container">
 <h2>FILTER</h2>
-  <form action='/service_providers'>
     <div class="column">
-      <p>This is where I want to put the result options.</p>
-      <div class="bottomborder"></div>
-      <!--ADDRESS-->
-<!--       <form class="form-horizontal">
-          <div class="form-group">
-            <label for="InputAddress">Address</label>
-            <input type="text" class="form-control" id="InputAddress" placeholder="Address">
-          </div>
-          <div class="form-group">
-          <label for="MileRadius">Within</label>
-          <select class="form-control">
-            <option>Anywhere</option>
-            <option>5 Miles</option>
-            <option>10 Miles</option>
-            <option>15 Miles</option>
-            <option>20 Miles</option>
-            <option>50 Miles</option>
-            <option>100 Miles</option>
-          </select>
-          </div>
-          <div class="form-group">
-          <button type="submit" class="btn btn-default">Update</button>
-          </div>
-      </form>
-      <div class="bottomborder"></div> -->
+    <%= search_form_for @q do |f| %>
 
-      <!--SERVICE PROVIDERS-->
-      <h4>Service Provider</h4>
-      <!-- loop through all industry_types -->
-      <!-- for each industry_type, show a checkbox -->
-      <!-- <label> -->
-      <!-- <input type="checkbox" name="industry_type_ids[]" value="<%#= type.id %>"" -->
-      <!-- <%#= type.name %> -->
-      <!-- </label> -->
+  <h4>Industry Type</h4>
+    <% IndustryType.all.each do |industry_type| %>
+      <label>
+        <%= check_box_tag('q[industry_type_id_eq_any][]', industry_type.id, (true if @q.industry_type_id_eq_any.try(:include?, industry_type.id))) %>
+        <%= industry_type.name %>
+      <label>
+    <% end %>
+    <br>
+    <div class="bottomborder"></div>
 
-      <!-- replace values with ids -->
-      <!-- names need to be industry_type_ids[] so multiple selection will be combined in array -->
-      <% @industry_types.each do |industry_type| %>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="industry_type_ids[]" value="<%= industry_type.id %>">
-          Attorney
-        </label>
-        <% industry_type.name %>
-      </div>
-      <% end %>
+  <h4>Space Type</h4>
+    <% SpaceType.all.each do |space_type| %>
+      <label>
+        <%= check_box_tag('q[space_type_id_eq_any][]', space_type.id, (true if @q.space_type_id_eq_any.try(:include?, space_type.id))) %>
+        <%= space_type.name %>
+      <label>
+    <% end %>
 
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="industry_type_id" value="Architect">
-          Architect
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="industry_type_id" value="Broker">
-          Broker
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="industry_type_id" value="Contractor">
-          Contractor
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="industry_type_id" value="Furniture Vendor">
-          Furniture Vendor
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="industry_type_id" value="Interior Designer">
-          Interior Designer
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="industry_type_id" value="Moving Company">
-          Moving Company
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="industry_type_id" value="Office Equipment">
-          Office Equipment
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="industry_type_id" value="Telecommunications">
-          Telecommunications Provider
-        </label>
-      </div>
-      <div class="bottomborder"></div>
+<br>
 
-      <!--SPACE TYPE-->
-      <h4>Space Type</h4>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="space_type_id" value="Office">
-          Office
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="space_type_id" value="Retail">
-          Retail
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="space_type_id" value="Industrial">
-          Industrial
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="space_type_id" value="Medical">
-          Medical
-        </label>
-      </div>
-      <div class="bottomborder"></div>
+      <%= f.submit :class => "btn btn-primary btn-block" %>
+      <a href="/service_providers" class="btn btn-default btn-block">Clear filters</a>
+    <% end %>
 
-      <!--LICENSE-->
-      <h4>License</h4>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="certification_id" value="Certification">
-          Certification
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" name="better_business_bureau" value="Better Business Bureau">
-          Better Business Bureau
-        </label>
-      </div>
-      <div class="bottomborder"></div>
-      <div class="form-group">
-        <div class="">
-          <input type="submit" value="Filter" class="btn btn-primary">
-        </div>
-      </div>
     </div>
-</form>
+</div>
 
 
 <div class="column2">

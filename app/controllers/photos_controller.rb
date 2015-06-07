@@ -18,7 +18,7 @@ class PhotosController < ApplicationController
     @photo.image = params[:image]
 
     if @photo.save
-      redirect_to "/photos", :notice => "Photo created successfully."
+      redirect_to "/projects/#{@photo.project_id}", :notice => "Photo created successfully."
     else
       render 'new'
     end
