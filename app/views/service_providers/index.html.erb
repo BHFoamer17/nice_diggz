@@ -101,12 +101,12 @@
         <h4 class="thumbnail-title"><%= service_provider.company_name %></h4>
           <div class="thumbnail-body">
         <dl>
+        <dt>Industry type</dt>
+        <dd><%= service_provider.industry_type.name %></dd>
 
-          <dt>Industry type</dt>
-          <dd><%= service_provider.industry_type.name %></dd>
 
-          <dt>Space Type</dt>
-          <dd><%= service_provider.space_type.name %></dd>
+        <dt>Space Type</dt>
+        <dd><%= service_provider.space_type.name %></dd>
 
         </dl>
         <div class="btn-group btn-group-justified">
@@ -118,9 +118,6 @@
             <i class="fa fa-edit"></i>
           </a>
 
-          <a href="/delete_service_provider/<%= service_provider.id %>" class="btn btn-danger" rel="nofollow">
-            <i class="fa fa-trash-o"></i>
-          </a>
         </div>
       </div>
     </div>
