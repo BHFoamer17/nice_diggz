@@ -120,9 +120,9 @@
    <% @service_provider.projects.each do |project| %>
    <div class="col-sm-6 col-md-4">
      <div class="thumbnail">
-       <% project.photos.each do |photo| %>
-       <img src="<%= photo.image %>">
-       <% end %>
+
+       <img src="<%= project.photos.first.image %>">
+
        <div class="caption">
          <h4><%= project.name %></h4>
          <p><a href="/projects/<%= project.id %>" class="btn btn-primary" role="button">Button</a></p>
@@ -135,7 +135,7 @@
 
 
 
-<% if current_service_provider.id == @service_provider.id %>
+<% if current_service_provider && current_service_provider.id == @service_provider.id %>
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
@@ -310,4 +310,5 @@
 
 
 <% end %>
+
 

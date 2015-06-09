@@ -5,4 +5,7 @@ class ApplicationController < ActionController::Base
 
   # before_action :authenticate_service_provider!
 
+  def after_sign_up_path_for(resource)
+    service_providers_new_path
+  end
 end

@@ -34,7 +34,7 @@
 
 <div class="page-header">
   <h1>
-    Service Providers
+    Add Your New Account
     <a href="/service_providers/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
   </h1>
 </div>
@@ -100,15 +100,16 @@
       <img src="<%= service_provider.photo_face %>">
         <h4 class="thumbnail-title"><%= service_provider.company_name %></h4>
           <div class="thumbnail-body">
-        <dl>
-        <dt>Industry type</dt>
-        <dd><%= service_provider.industry_type.name %></dd>
+          <dl>
+               <dt>Industry type</dt>
+               <dd><%= service_provider.industry_type %></dd>
 
 
-        <dt>Space Type</dt>
-        <dd><%= service_provider.space_type.name %></dd>
+               <dt>Space Type</dt>
+               <dd><%= service_provider.space_type %></dd>
 
-        </dl>
+               </dl>
+
         <div class="btn-group btn-group-justified">
           <a href="/service_providers/<%= service_provider.id %>" class="btn btn-primary">
             <i class="fa fa-search-plus"></i>
@@ -117,6 +118,10 @@
           <a href="/service_providers/<%= service_provider.id %>/edit" class="btn btn-warning">
             <i class="fa fa-edit"></i>
           </a>
+
+          <a href="/delete_service_provider/<%= service_provider.id %>" class="btn btn-danger" rel="nofollow">
+            <i class="fa fa-trash-o"></i>
+            </a>
 
         </div>
       </div>
