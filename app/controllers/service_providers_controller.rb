@@ -23,6 +23,7 @@ class ServiceProvidersController < ApplicationController
 
   def create
     @service_provider = ServiceProvider.new
+    @service_provider = current_service_provider
     @service_provider.street_address_2 = params[:street_address_2]
     @service_provider.company_description = params[:company_description]
     @service_provider.company_email_address = params[:company_email_address]
