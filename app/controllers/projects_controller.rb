@@ -1,16 +1,10 @@
 class ProjectsController < ApplicationController
-  skip_before_action :authenticate_service_provider!, :only =>[:index, :show]
-
-
+  # skip_before_action :authenticate_service_provider!, :only =>[:index, :show]
 
   def index
-    # @projects = Project.all
-    # if current.service_provider != nil
-    # @projects = project.where({:service_provider_id => current_service_provider.id})
+
     @projects = current_service_provider.projects
-    # else
-    # @projects = Project.all
-    # end
+
 
   end
 

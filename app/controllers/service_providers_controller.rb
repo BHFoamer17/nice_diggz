@@ -1,6 +1,6 @@
 class ServiceProvidersController < ApplicationController
 
-  skip_before_action :authenticate_service_provider!, :only =>[:index, :show]
+  # skip_before_action :authenticate_service_provider!, :only =>[:index, :show,]
 
   def index
 

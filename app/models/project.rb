@@ -5,5 +5,4 @@ class Project < ActiveRecord::Base
   belongs_to :space_type
 
 
-
 end
