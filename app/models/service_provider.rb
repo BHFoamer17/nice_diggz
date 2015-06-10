@@ -11,5 +11,19 @@ class ServiceProvider < ActiveRecord::Base
   belongs_to :industry_type
   belongs_to :space_type
 
+  geocoded_by :full_street_address
+
+  before_update :geocode, if: :has_address?
+
+  def full_street_address
+    street = [street_address_1, street_address_2].compact.join(" ")
+    all_but_zip = [street, city, state].compact.join(", ")
+    [all_but_zip, zip_code].compact.join(" ")
+  end
+
+  def has_address?
+    street_address_1.present? && zip_code.present?
+  end
+
 
 end

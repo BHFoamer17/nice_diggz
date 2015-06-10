@@ -32,6 +32,7 @@
 </style>
 </head>
 
+
 <div class="page-header">
   <h1>
     Add Your New Account
@@ -102,13 +103,13 @@
           <div class="thumbnail-body">
           <dl>
                <dt>Industry type</dt>
-               <dd><%= service_provider.industry_type %></dd>
+               <dd><%= service_provider.industry_type.try(:name) %></dd>
 
 
                <dt>Space Type</dt>
-               <dd><%= service_provider.space_type %></dd>
+               <dd><%= service_provider.space_type.try(:name) %></dd>
 
-               </dl>
+          </dl>
 
         <div class="btn-group btn-group-justified">
           <a href="/service_providers/<%= service_provider.id %>" class="btn btn-primary">

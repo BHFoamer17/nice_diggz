@@ -1,12 +1,12 @@
 <!-- Validation failure messages -->
 
 <% if @service_provider.errors.any? %>
-  <% @service_provider.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @service_provider.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <!-- Responsive panel example -->
@@ -22,12 +22,12 @@
       </div>
     </div>
     <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="form-group">
-        <label for="photo_face">Upload Photo</label>
+      <div class="col-sm-6 col-md-4">
+        <div class="form-group">
+          <label for="photo_face">Upload Photo</label>
           <input id="photo_face" input name="photo_face" type="file">
+        </div>
       </div>
-    </div>
       <div class="col-sm-6 col-md-4">
         <div class="form-group">
           <label for="company_name">Company Name</label>
@@ -45,6 +45,13 @@
     <div class="row">
       <div class="col-sm-6 col-md-4">
         <div class="form-group">
+          <label for="photo_banner">Upload Banner Photo</label>
+          <input id="photo_banner" input name="photo_banner" type="file">
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <div class="form-group">
           <label for="industry_experience">Industry Experience</label>
           <input type="text" id="industry_experience" name="industry_experience" placeholder="Industry Expeirence" class="form-control" value  ="<%= @service_provider.industry_experience %>">
         </div>
@@ -56,18 +63,16 @@
           <%= select_tag(:space_type_id, options_from_collection_for_select(SpaceType.all, :id, :name, @service_provider.space_type_id), :class => "form-control") %>
         </div>
       </div>
+    </div>
 
 
+    <div class="row">
       <div class="col-sm-6 col-md-4">
         <div class="form-group">
           <label for="better_business_bureau_rating">Better Business Bureau Rating</label>
           <input type="text" id="better_business_bureau_rating" name="better_business_bureau_rating" placeholder="Better Business Bureau Rating" class="form-control" value  ="<%= @service_provider.better_business_bureau_rating %>">
         </div>
       </div>
-    </div>
-
-
-    <div class="row">
       <div class="col-sm-6 col-md-4">
         <div class="form-group">
           <label for="awards">Awards</label>

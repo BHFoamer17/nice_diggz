@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603002253) do
+ActiveRecord::Schema.define(version: 20150609135831) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -99,6 +99,8 @@ ActiveRecord::Schema.define(version: 20150603002253) do
     t.integer  "space_type_id"
     t.string   "state"
     t.string   "personal_email_address"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "service_providers", ["email"], name: "index_service_providers_on_email", unique: true

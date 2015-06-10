@@ -67,6 +67,15 @@
 
 
 <!-- COMPANY INFORMATION -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-12">
+      <h3>Company Description</h3>
+      <p class="lead"> <%= @service_provider.company_description %></p>
+    </div>
+  </div>
+</div>
+
 <div class="containter">
   <div class="row">
     <div class="col-sm-6 col-md-4">
@@ -91,15 +100,6 @@
     <div class="col-sm-6 col-md-4">
         <h3>Space Type</h3>
         <p class="lead"> <%= @service_provider.space_type.name %></p>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 col-md-12">
-      <h3>Company Description</h3>
-      <p class="lead"> <%= @service_provider.company_description %></p>
     </div>
   </div>
 </div>
