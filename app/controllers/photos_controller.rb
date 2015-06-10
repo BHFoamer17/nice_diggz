@@ -16,6 +16,7 @@ class PhotosController < ApplicationController
     @photo.primary = params[:primary]
     @photo.project_id = params[:project_id]
     @photo.image = params[:image]
+    @photo.name = params[:name]
 
     if @photo.save
       redirect_to "/projects/#{@photo.project_id}", :notice => "Photo created successfully."
@@ -34,6 +35,7 @@ class PhotosController < ApplicationController
     @photo.primary = params[:primary]
     @photo.project_id = params[:project_id]
     @photo.image = params[:image]
+    @photo.name = params[:name]
 
     if @photo.save
       redirect_to "/photos", :notice => "Photo updated successfully."

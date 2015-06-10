@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609135831) do
+ActiveRecord::Schema.define(version: 20150610193358) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20150609135831) do
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "cost"
   end
 
   create_table "professional_associations", force: :cascade do |t|
@@ -62,11 +64,12 @@ ActiveRecord::Schema.define(version: 20150609135831) do
     t.string   "cost_amount_description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cost"
   end
 
   create_table "service_providers", force: :cascade do |t|
-    t.string   "email",                         null: false, default: ""
-    t.string   "encrypted_password",            null: false, default: ""
+    t.string   "email",                         default: "", null: false
+    t.string   "encrypted_password",            default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

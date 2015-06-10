@@ -1,5 +1,15 @@
 class ProjectsController < ApplicationController
-  # skip_before_action :authenticate_service_provider!, :only =>[:index, :show]
+  skip_before_action :authenticate_service_provider!, :only =>[:index, :show]
+
+  before_action :ensure_current_service_provider_is_owner, :only => [:update, :destroy, :edit]
+    def ensure_current_service_provider_is_owner
+      @project = Project.find(params[:id])
+      if @project.service_provider_id != current_service_provider.id
+        redirect_to root_url, :alert => "Nice Try"
+      end
+    end
+
+
 
   def index
 
@@ -33,6 +43,7 @@ class ProjectsController < ApplicationController
     @project.description = params[:description]
     @project.completed_on = params[:completed_on]
     @project.cost_amount_description = params[:cost_amount_description]
+    @project.cost = params[:cost]
 
     if @project.save
       redirect_to "/service_provider", :notice => "Project created successfully."
@@ -63,6 +74,7 @@ class ProjectsController < ApplicationController
     @project.description = params[:description]
     @project.completed_on = params[:completed_on]
     @project.cost_amount_description = params[:cost_amount_description]
+    @project.cost = params[:cost]
 
     if @project.save
       render 'show', :notice => "Project updated successfully."
