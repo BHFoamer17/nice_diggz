@@ -55,7 +55,7 @@
 </div>
 
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -81,6 +81,7 @@
      <span class="sr-only">Next</span>
    </a>
  </div>
+ </div> -->
 
 
 <!-- End responsive panel example -->
@@ -111,17 +112,6 @@
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-          <!-- Label and input for primary -->
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <div class="checkbox">
-                <label for="primary">
-                  <input type="checkbox" id="primary" name="primary" value="1" <%= "checked" if @photo.primary %>>
-                  Primary
-                </label>
-              </div>
-            </div>
-          </div>
 
           <!-- Label and input for project_id -->
 

@@ -1,3 +1,71 @@
+<head>
+<style>
+
+.main-jumbotron {
+  background: url('<%= image_path('chicagodusk.jpg')%>') no-repeat center center;
+  background-size: cover;
+  color: white;
+}
+.main-jumbotron .container {
+  min-height: 500px;
+}
+
+</style>
+</head>
+<!--Page Banner-->
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<div id="main-jumbotron" class="main-jumbotron">
+  <div class="container text-center">
+    <h1>Welcome to NiceDiggz!</h1>
+    <p>Let's find the right service provider to help you with your dream office, retail, or medical space!</p>
+  </div>
+</div>
+</div>
+</div>
+
+  <div class="row" style="margin-top: 15px;">
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Find Your Service Provider</h3>
+        </div>
+        <div class="panel-body">
+          <p class="lead">Narrow your search by type of service, proximity, and expertise.</p>
+          <%= image_tag('chicagodusk.jpg', class: 'img-responsive') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Hire</h3>
+        </div>
+        <div class="panel-body">
+          <p class="lead">Choose from hundreds of service providers to solve you real estate needs and connect. </p>
+          <%= image_tag('chicagodusk.jpg', class: 'img-responsive') %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Be a Rock Star!</h3>
+        </div>
+        <div class="panel-body">
+          <p class="lead">Save money and do you what you do best!</p>
+          <%= image_tag('chicagodusk.jpg', class: 'img-responsive') %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
