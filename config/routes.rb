@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :service_providers
 
+  root 'service_providers#index'
+
   # Routes for the Service_provider resource:
   # CREATE
   get "/service_providers/new", :controller => "service_providers", :action => "new"

@@ -1,4 +1,15 @@
 <!-- Responsive panel example-->
+
+<div class="page-header">
+  <h1>
+    Edit Your Project
+    <a href="/projects/<%= @project.id %>/edit" class="btn btn-warning">
+      <i class="fa fa-edit"></i>
+    </a>
+  </h1>
+</div>
+
+
 <div class="container">
  <div class="row">
      <div class="page-header">
@@ -26,10 +37,6 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <h4>Completion Date</h4>
-      <p class="lead"><%= @project.completed_on.strftime('%B %e, %Y') %></p>
-    </div>
     <div class="col-md-4">
       <h4>Cost of Project</h4>
       <p class="lead"><%= @project.cost_amount %></p>
@@ -100,6 +107,8 @@
 <% end %>
 
 <!-- Responsive panel example -->
+
+
 
 <div class="row">
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">

@@ -131,7 +131,7 @@
    <div class="col-sm-6 col-md-4">
      <div class="thumbnail">
 
-       <img src="<%= project.photos.first.image %>">
+       <img src="<%= project.photos.first.try(:image) %>">
 
        <div class="caption">
          <h4><%= project.name %></h4>

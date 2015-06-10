@@ -1,4 +1,8 @@
 class ProjectsController < ApplicationController
+  skip_before_action :authenticate_service_provider!, :only =>[:index, :show]
+
+
+
   def index
     # @projects = Project.all
     # if current.service_provider != nil
@@ -37,7 +41,7 @@ class ProjectsController < ApplicationController
     @project.cost_amount_description = params[:cost_amount_description]
 
     if @project.save
-      redirect_to "/projects", :notice => "Project created successfully."
+      redirect_to "/service_provider", :notice => "Project created successfully."
     else
       render 'new'
     end
@@ -67,7 +71,7 @@ class ProjectsController < ApplicationController
     @project.cost_amount_description = params[:cost_amount_description]
 
     if @project.save
-      redirect_to "/projects", :notice => "Project updated successfully."
+      render 'show', :notice => "Project updated successfully."
     else
       render 'edit'
     end

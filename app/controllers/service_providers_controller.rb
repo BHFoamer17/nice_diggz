@@ -1,4 +1,7 @@
 class ServiceProvidersController < ApplicationController
+
+  skip_before_action :authenticate_service_provider!, :only =>[:index, :show]
+
   def index
 
     @q = ServiceProvider.ransack(params[:q])
