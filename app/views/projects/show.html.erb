@@ -58,11 +58,15 @@
 
 <div class="container">
   <div class="row">
-<% @project.photos.each do |photo| %>
+    <% @project.photos.each do |photo| %>
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
         <img src="<%= photo.image %>">
+        <div class="caption">
+          <h3><%= photo.name %></h3>
+        </div>
       </div>
+
     </div>
     <% end %>
   </div>
@@ -103,7 +107,7 @@
 <% @photo = Photo.new %>
 
 <!-- Validation failure messages -->
-
+<% if current_service_provider && current_service_provider.id == @project.service_provider_id  %>
 <% if @photo.errors.any? %>
   <% @photo.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
@@ -166,6 +170,7 @@
     </div>
   </div>
 </div>
+<% end %>
 
 <!-- End responsive panel example -->
 

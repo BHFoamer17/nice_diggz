@@ -86,7 +86,7 @@ class ServiceProvidersController < ApplicationController
     @service_provider.personal_email_address = params[:personal_email_address]
 
     if @service_provider.save
-      redirect_to "/service_providers", :notice => "Service provider updated successfully."
+      render 'show', :notice => "Service provider updated successfully."
     else
       render 'edit'
     end
