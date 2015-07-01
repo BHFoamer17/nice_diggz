@@ -1,5 +1,6 @@
 class Category < ActiveRecord::Base
 
-has_many :projects
+belongs_to :photo
+belongs_to :description
 
 end

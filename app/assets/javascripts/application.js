@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require moment
 //= require bootstrap-datetimepicker
+//= require underscore
+//= require gmaps/google
+
+

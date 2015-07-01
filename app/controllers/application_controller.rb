@@ -6,5 +6,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_service_provider!
 
 
+
 end
 

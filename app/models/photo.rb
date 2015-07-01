@@ -5,4 +5,14 @@ class Photo < ActiveRecord::Base
 
   belongs_to :project
 
+  has_many :categories
+  has_many :descriptions, :through => :categories
+
+  attr_reader :description_token
+
+  def description_token=(ids)
+    self.description_ids = ids.split(",")
+  end
+
+
 end

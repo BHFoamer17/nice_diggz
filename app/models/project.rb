@@ -5,4 +5,6 @@ class Project < ActiveRecord::Base
   belongs_to :space_type
 
 
+  acts_as_taggable
+
 end

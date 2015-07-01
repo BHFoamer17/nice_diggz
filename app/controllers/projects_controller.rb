@@ -44,9 +44,10 @@ class ProjectsController < ApplicationController
     @project.completed_on = params[:completed_on]
     @project.cost_amount_description = params[:cost_amount_description]
     @project.cost = params[:cost]
+    @project.tag_list = params[:tag_list]
 
     if @project.save
-      redirect_to "/service_provider", :notice => "Project created successfully."
+      redirect_to "/service_providers/#{@project.service_provider_id}", :notice => "Project created successfully."
     else
       render 'new'
     end
@@ -75,6 +76,7 @@ class ProjectsController < ApplicationController
     @project.completed_on = params[:completed_on]
     @project.cost_amount_description = params[:cost_amount_description]
     @project.cost = params[:cost]
+    @project.tag_list = params[:tag_list]
 
     if @project.save
       render 'show', :notice => "Project updated successfully."

@@ -1,5 +1,22 @@
 Rails.application.routes.draw do
 
+  # Routes for the Description resource:
+  # CREATE
+  get "/descriptions/new", :controller => "descriptions", :action => "new"
+  post "/create_description", :controller => "descriptions", :action => "create"
+
+  # READ
+  get "/descriptions", :controller => "descriptions", :action => "index"
+  get "/descriptions/:id", :controller => "descriptions", :action => "show"
+
+  # UPDATE
+  get "/descriptions/:id/edit", :controller => "descriptions", :action => "edit"
+  post "/update_description/:id", :controller => "descriptions", :action => "update"
+
+  # DELETE
+  get "/delete_description/:id", :controller => "descriptions", :action => "destroy"
+  #------------------------------
+
   devise_for :service_providers
 
   # Routes for the Service_provider resource:

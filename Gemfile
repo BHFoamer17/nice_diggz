@@ -8,21 +8,27 @@ gem 'carrierwave'
 
 gem 'ransack'
 
+# Map/Geocoder Feature
 gem 'geocoder'
+gem 'gmaps4rails'
+gem 'geokit-rails'
+
+gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'cancan'
+
+gem 'chosen-rails'
 
 gem 'momentjs-rails', '>= 2.9.0'
 
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
