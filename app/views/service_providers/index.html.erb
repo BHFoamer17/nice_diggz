@@ -45,11 +45,13 @@
 
 <!--GEOCODER-->
 <h3> Geocoding Addresses </h3>
+<%#= search_form_for @q do |f| %>
+  <!-- DEPRECATED: Remove later. -->
 <%= form_tag service_providers_path, :method => :get do %>
-<p>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag "Search Near", :city => nil %>
-</p>
+  <p>
+    <%= f.text_field :search, value: params[:search] %>
+    <%= f.submit "Search Near", :city => nil %>
+  </p>
 <% end %>
 
 <!--GMAPS4RAILS-->

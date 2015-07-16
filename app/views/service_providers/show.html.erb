@@ -130,13 +130,10 @@
    <% @service_provider.projects.each do |project| %>
    <div class="col-sm-6 col-md-4">
      <div class="thumbnail">
-
        <img src="<%= project.photos.first.try(:image) %>">
-
        <div class="caption">
          <h4><%= project.name %></h4>
          <p><a href="/projects/<%= project.id %>" class="btn btn-primary" role="button">Button</a></p>
-
        </div>
      </div>
    </div>
