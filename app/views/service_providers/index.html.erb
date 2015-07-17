@@ -2,7 +2,7 @@
 
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 
-<head>
+<!-- <head> -->
 <style>
 
      .bottomborder {
@@ -33,7 +33,7 @@
     }
 
 </style>
-</head>
+<!-- </head> -->
 
 <div class="page-header">
   <h1>
@@ -45,14 +45,13 @@
 
 <!--GEOCODER-->
 <h3> Geocoding Addresses </h3>
-<%#= search_form_for @q do |f| %>
   <!-- DEPRECATED: Remove later. -->
-<%= form_tag service_providers_path, :method => :get do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search Near", :city => nil %>
+<%#= form_tag service_providers_path, :method => :get do %>
+<!--   <p>
+    <%#= f.text_field :search, value: params[:q].try(:[], :search) %>
+    <%#= f.submit "Search Near", :city => nil %>
   </p>
-<% end %>
+ --><%# end %>
 
 <!--GMAPS4RAILS-->
 <div style='width: 800px;'>
@@ -71,28 +70,38 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 
 <!-- Responsive, Isotope-based layout example -->
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-xs-12">
-    <%= search_form_for @q do |f| %>
+    <%#= search_form_for @q do |f| %>
       <p class="lead">Narrow results:</p>
 
       <div class="form-group">
-        <%= f.label :company_name_cont, "Search Company" %>
-        <%= f.text_field :company_name_cont, :class => "form-control", :placeholder => "Search Company" %>
+        <%#= f.label :company_name_cont, "Search Company" %>
+        <%#= f.text_field :company_name_cont, :class => "form-control", :placeholder => "Search Company" %>
       </div>
 
-        <%= f.submit :class => "btn btn-primary btn-block" %>
+        <%#= f.submit :class => "btn btn-primary btn-block" %>
         <a href="/service_providers" class="btn btn-default btn-block">Clear filters</a>
-      <% end %>
+      <%# end %>
 
   </div>
 </div>
-
+ -->
 <!--SEARCH COLUMN -->
 <div class="content-container">
 <h2>FILTER</h2>
-    <div class="column">
-    <%= search_form_for @q do |f| %>
+  <div class="column">
+  <%= search_form_for @q do |f| %>
+
+  <div class='form-group'>
+    <%= f.label :search, "Search Near" %>
+    <%= f.text_field :search, :class => "form-control", :placeholder => "City or Zip", value: params[:q].try(:[], :search) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :company_name_cont, "Search Company" %>
+    <%= f.text_field :company_name_cont, :class => "form-control", :placeholder => "Company Name" %>
+  </div>
 
   <h4>Industry Type</h4>
     <% IndustryType.all.each do |industry_type| %>
@@ -123,6 +132,7 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 
 
 <div class="column2">
+
 <% @service_providers.each do |service_provider| %>
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
