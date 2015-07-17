@@ -6,16 +6,16 @@ class ServiceProvidersController < ApplicationController
 
     @q = ServiceProvider.ransack(params[:q])
     @service_providers = @q.result(:distring => true).includes(:industry_type, :space_type)
-    # raise @service_providers.inspect
-    # if params[:search].present?
-      # @service_providers = @service_providers.near(params[:search], 50)
-    # end
 
-    if params[:search].present?
-      @service_providers = ServiceProvider.near(params[:search], 50)
-    else
-      @service_provider = ServiceProvider.all
+    if params[:q].try(:[], :search).present?
+      @service_providers = @service_providers.near(params[:q][:search], 50)
     end
+
+    # if params[:search].present?
+    #   @service_providers = ServiceProvider.near(params[:search], 50)
+    # else
+    #   @service_provider = ServiceProvider.all
+    # end
 
     @hash = Gmaps4rails.build_markers(@service_providers) do |service_provider, marker|
       marker.lat service_provider.latitude
