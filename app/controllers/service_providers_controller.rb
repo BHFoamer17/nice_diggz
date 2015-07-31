@@ -3,12 +3,11 @@ class ServiceProvidersController < ApplicationController
   skip_before_action :authenticate_service_provider!, :only =>[:index, :show,]
 
   def index
-
     @q = ServiceProvider.ransack(params[:q])
     @service_providers = @q.result(:distring => true).includes(:industry_type, :space_type)
 
     if params[:q].try(:[], :search).present?
-      @service_providers = @service_providers.near(params[:q][:search], 50)
+      @service_providers = @service_providers.near(params[:q][:search], params[:distance].to_i)
     end
 
     # if params[:search].present?

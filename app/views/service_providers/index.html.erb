@@ -96,6 +96,7 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   <div class='form-group'>
     <%= f.label :search, "Search Near" %>
     <%= f.text_field :search, :class => "form-control", :placeholder => "City or Zip", value: params[:q].try(:[], :search) %>
+    <%= select_tag :distance, options_for_select([1, 5, 10, 25, 50], params[:distance]), :class => "form-control", :placeholder => 'Distance' %>
   </div>
 
   <div class="form-group">
