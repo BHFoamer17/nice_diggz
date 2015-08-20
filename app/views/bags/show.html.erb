@@ -4,37 +4,38 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Photo #<%= @photo.id %></h3>
+        <h3 class="panel-title">Bag #<%= @bag.id %></h3>
       </div>
       <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
+              <dt>Name</dt>
+              <dd><%= @bag.name %></dd>
 
-              <dt>Project</dt>
-              <dd><%= @photo.project_id %></dd>
+              <dt>Bagable type</dt>
+              <dd><%= @bag.bagable_type %></dd>
 
-              <dt>Image</dt>
-              <dd><img src="<%= @photo.image %>" class="img-responsive"></dd>
+              <dt>Bagable</dt>
+              <dd><%= @bag.bagable_id %></dd>
 
-              <dt>Tag</dt>
-              <%= render partial: "bags/bags", locals: {bagable: @photo} %>
+              <dt>Service provider</dt>
+              <dd><%= @bag.service_provider_id %></dd>
 
-              <%= render partial: "bags/form", locals: {bagable: @photo} %>
-
-
+              <dt>Photo</dt>
+              <dd><%= @bag.photo_id %></dd>
 
             </dl>
             <div class="btn-group btn-group-justified">
-              <a href="/photos" class="btn btn-primary">
+              <a href="/bags" class="btn btn-primary">
                 <i class="fa fa-chevron-left"></i>
               </a>
 
-              <a href="/photos/<%= @photo.id %>/edit" class="btn btn-warning">
+              <a href="/bags/<%= @bag.id %>/edit" class="btn btn-warning">
                 <i class="fa fa-edit"></i>
               </a>
 
-              <a href="/delete_photo/<%= @photo.id %>" class="btn btn-danger" rel="nofollow">
+              <a href="/delete_bag/<%= @bag.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash-o"></i>
               </a>
             </div>

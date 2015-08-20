@@ -19,6 +19,8 @@ class ServiceProvider < ActiveRecord::Base
 
   after_validation :geocode
 
+  has_many :bags, as: :bagable
+
 
   # before_update :geocode, if: :has_address?
 

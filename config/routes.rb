@@ -1,5 +1,22 @@
 Rails.application.routes.draw do
 
+  # Routes for the Bag resource:
+  # CREATE
+  get "/bags/new", :controller => "bags", :action => "new"
+  post "/create_bag", :controller => "bags", :action => "create"
+
+  # READ
+  get "/bags", :controller => "bags", :action => "index"
+  get "/bags/:id", :controller => "bags", :action => "show"
+
+  # UPDATE
+  get "/bags/:id/edit", :controller => "bags", :action => "edit"
+  post "/update_bag/:id", :controller => "bags", :action => "update"
+
+  # DELETE
+  get "/delete_bag/:id", :controller => "bags", :action => "destroy"
+  #------------------------------
+
   # Routes for the Description resource:
   # CREATE
   get "/descriptions/new", :controller => "descriptions", :action => "new"
@@ -106,6 +123,10 @@ Rails.application.routes.draw do
 
   # Routes for the Photo resource:
   # CREATE
+  resources :photos do
+    resources :bags, module: :photos
+    end
+
   get "/photos/new", :controller => "photos", :action => "new"
   post "/create_photo", :controller => "photos", :action => "create"
 

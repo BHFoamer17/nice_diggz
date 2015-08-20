@@ -8,11 +8,12 @@ class Photo < ActiveRecord::Base
   has_many :categories
   has_many :descriptions, :through => :categories
 
+  has_many :bags, as: :bagable
+
   attr_reader :description_token
 
   def description_token=(ids)
     self.description_ids = ids.split(",")
   end
-
 
 end

@@ -1,0 +1,6 @@
+<%= form_for [bagable, Bag.new] do |f| %>
+<div class="form-group">
+<%= f.text_area :name, class: "form-control", placeholder: "Add a Comment" %>
+</div>
+<%= f.submit class: "btn btn-primary" %>
+<% end %>

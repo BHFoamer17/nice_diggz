@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622225655) do
+ActiveRecord::Schema.define(version: 20150820000338) do
+
+  create_table "bags", force: :cascade do |t|
+    t.string   "name"
+    t.string   "bagable_type"
+    t.integer  "bagable_id"
+    t.integer  "service_provider_id"
+    t.integer  "photo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "service_provider_id"
+    t.text     "description"
+    t.integer  "photo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -32,6 +51,17 @@ ActiveRecord::Schema.define(version: 20150622225655) do
     t.string   "tokens"
     t.string   "token"
   end
+
+  create_table "favorite_photos", force: :cascade do |t|
+    t.integer  "photo_id"
+    t.integer  "book_id"
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorite_photos", ["book_id"], name: "index_favorite_photos_on_book_id"
+  add_index "favorite_photos", ["photo_id"], name: "index_favorite_photos_on_photo_id"
 
   create_table "industry_types", force: :cascade do |t|
     t.string   "name"
@@ -80,6 +110,7 @@ ActiveRecord::Schema.define(version: 20150622225655) do
     t.datetime "updated_at"
     t.string   "cost"
     t.string   "tag_list"
+    t.string   "square_feet"
   end
 
   create_table "service_providers", force: :cascade do |t|

@@ -1,0 +1,91 @@
+<!-- Validation failure messages -->
+
+<% if @bag.errors.any? %>
+  <% @bag.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Bag #<%= @bag.id %></h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_bag/<%= @bag.id %>" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for name -->
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">
+              Name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @bag.name %>">
+            </div>
+          </div>
+
+          <!-- Label and input for bagable_type -->
+          <div class="form-group">
+            <label for="bagable_type" class="col-sm-2 control-label">
+              Bagable type
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="bagable_type" name="bagable_type" placeholder="Bagable type" class="form-control" value="<%= @bag.bagable_type %>">
+            </div>
+          </div>
+
+          <!-- Label and input for bagable_id -->
+          <div class="form-group">
+            <label for="bagable_id" class="col-sm-2 control-label">
+              Bagable
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="bagable_id" name="bagable_id" placeholder="Bagable" class="form-control" value="<%= @bag.bagable_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for service_provider_id -->
+          <div class="form-group">
+            <label for="service_provider_id" class="col-sm-2 control-label">
+              Service provider
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="service_provider_id" name="service_provider_id" placeholder="Service provider" class="form-control" value="<%= @bag.service_provider_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for photo_id -->
+          <div class="form-group">
+            <label for="photo_id" class="col-sm-2 control-label">
+              Photo
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="photo_id" name="photo_id" placeholder="Photo" class="form-control" value="<%= @bag.photo_id %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-warning">
+                Update Bag
+              </button>
+              or
+              <a href="/bags/<%= @bag.id %>">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- End responsive panel example -->
