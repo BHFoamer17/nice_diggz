@@ -154,6 +154,8 @@ Rails.application.routes.draw do
   # DELETE
   get "/delete_professional_association/:id", :controller => "professional_associations", :action => "destroy"
   #------------------------------
+  #READ
+  get "/landing_pages", :controller => "landing_pages", :action => "show"
 
   root 'service_providers#index'
 
