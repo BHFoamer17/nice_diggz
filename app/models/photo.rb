@@ -9,6 +9,7 @@ class Photo < ActiveRecord::Base
   has_many :descriptions, :through => :categories
 
   has_many :bags, as: :bagable
+  has_many :tag_options, through: :bags
 
   attr_reader :description_token
 

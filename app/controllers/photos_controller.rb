@@ -39,6 +39,10 @@ class PhotosController < ApplicationController
     @photo.image = params[:image]
     @photo.name = params[:name]
 
+    if params[:tag_option_ids]
+      @photo.tag_option_ids = params[:tag_option_ids]
+    end
+
     if @photo.save
       redirect_to "/photos", :notice => "Photo updated successfully."
     else

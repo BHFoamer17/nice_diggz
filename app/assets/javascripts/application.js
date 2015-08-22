@@ -16,5 +16,9 @@
 //= require bootstrap-datetimepicker
 //= require underscore
 //= require gmaps/google
+//= require select2
 
 
+$(document).ready(function() {
+  $(".select2-tags").select2();
+});

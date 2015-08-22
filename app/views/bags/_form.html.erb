@@ -1,6 +1,13 @@
 <%= form_for [bagable, Bag.new] do |f| %>
 <div class="form-group">
-<%= f.text_area :name, class: "form-control", placeholder: "Add a Comment" %>
+<%#= f.text_area :name, class: "form-control", placeholder: "Add a Comment" %>
+      <%= f.select(:tag_option_id, options_from_collection_for_select(TagOption.all, :id, :name, nil), {}, :class => "form-control select2-tags") %>
 </div>
+
+<!-- <div class="form-group"> -->
+<%#= f.text_area :name, class: "form-control", placeholder: "Add a Comment" %>
+      <%#= f.collection_select(:tag_option_ids, options_from_collection_for_select(TagOption.all, :id, :name, nil), {}, {:class => "form-control select2-tags", :multiple => true}) %>
+<!-- </div> -->
+
 <%= f.submit class: "btn btn-primary" %>
 <% end %>

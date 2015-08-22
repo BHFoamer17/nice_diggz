@@ -23,6 +23,16 @@
               <%= render partial: "bags/form", locals: {bagable: @photo} %>
 
 
+<%#= form_for @photo do |f| %>
+<!-- <div class="form-group"> -->
+<%#= f.text_area :name, class: "form-control", placeholder: "Add a Comment" %>
+      <%#= f.collection_select(:tag_option_ids, TagOption.all, :id, :name, @photo.tag_option_ids, :class => "form-control select2-tags", :multiple => true) %>
+<!-- </div> -->
+
+<%#= f.submit class: "btn btn-primary" %>
+<%# end %>
+
+
 
             </dl>
             <div class="btn-group btn-group-justified">

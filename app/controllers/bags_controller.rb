@@ -35,7 +35,7 @@ class BagsController < ApplicationController
 private
 
   def bag_params
-    params.require(:bag).permit(:name)
+    params.require(:bag).permit(:tag_option_id, :tag_option_ids)
   end
 
   def edit
